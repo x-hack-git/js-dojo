@@ -7,8 +7,26 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 module.exports = {
   siteMetadata: {
     siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    title: 'JavaScript道場',
+    author: '株式会社X-HACK',
+    description: 'JavaScriptで自由自在にコードを書けるようになりましょう',
+    siteUrl: 'https://takumon.github.io/blog',
   },
   plugins: [
+    // {
+    //   resolve: `gatsby-transformer-remark`,
+    //   options: {
+    //     plugins: [
+    //     {
+    //       resolve: "gatsby-remark-external-links",
+    //       options: {
+    //         target: "_self",
+    //         rel: "nofollow"
+    //       }
+    //     }
+    //     ]
+    //   }
+    // },
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
@@ -22,15 +40,15 @@ module.exports = {
             title: `About`,
             slug: `/about`,
           },
+          {
+            title: `資料`,
+            slug: `/about`,
+          },
         ],
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
-          },
-          {
-            name: `Instagram`,
-            url: `https://www.instagram.com/lekoarts.de/`,
+            url: `https://twitter.com/xhackjp1`,
           },
         ],
       },
