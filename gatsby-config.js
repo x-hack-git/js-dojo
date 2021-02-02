@@ -6,9 +6,10 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `JavaScript道場`,
+    siteTitleAlt: `JavaScript道場 - 自由自在にコードを書けるようになる！プログラミング塾`,
     title: 'JavaScript道場',
-    author: '株式会社X-HACK',
+    author: '株式会社X-HACK 松田信介',
     description: 'JavaScriptで自由自在にコードを書けるようになりましょう',
     siteUrl: 'https://takumon.github.io/blog',
   },
