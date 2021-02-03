@@ -38,12 +38,32 @@ module.exports = {
             slug: `/blog`,
           },
           {
-            title: `About`,
+            title: `カリキュラムについて`,
             slug: `/about`,
           },
           {
             title: `資料`,
             slug: `/about`,
+          },
+          {
+            title: `利用規約`,
+            slug: `/terms`,
+          },
+          {
+            title: `プライバシーポリシー`,
+            slug: `/policy`,
+          },
+          {
+            title: `会社概要`,
+            slug: `/company`,
+          },
+          {
+            title: `JavaScript基礎講座`,
+            slug: `/javascript_basics`,
+          },
+          {
+            title: `お申し込み`,
+            slug: `/apply`,
           },
         ],
         externalLinks: [
