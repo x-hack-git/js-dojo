@@ -6,12 +6,24 @@ const shouldAnalyseBundle = process.env.ANALYSE_BUNDLE
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `JavaScript道場`,
-    siteTitleAlt: `JavaScript道場 - 自由自在にコードを書けるようになる！プログラミング塾`,
-    title: 'JavaScript道場',
-    author: '株式会社X-HACK 松田信介',
-    description: 'JavaScriptで自由自在にコードを書けるようになりましょう',
-    siteUrl: 'https://takumon.github.io/blog',
+    siteTitle: `X-HACK`,
+    siteTitleAlt: `X-HACK - あらゆるものをHACKする`,
+    siteImage: `/banner.jpg`,
+    siteDescription: ``,
+    siteUrl: 'https://takumon.github.io/',
+    // title: '株式会社X-HACK',
+    // author: '株式会社X-HACK 松田信介',
+    // description: 'あらゆるものをHACKする',
+    social: [
+      {
+        name: "twitter",
+        url: "https://twitter.com/amber1ey",
+      },
+      {
+        name: "github",
+        url: "https://github.com/amberleyromo",
+      },
+    ],
   },
   plugins: [
     // {
@@ -33,42 +45,38 @@ module.exports = {
       // See the theme's README for all available options
       options: {
         navigation: [
-          {
-            title: `Blog`,
-            slug: `/blog`,
-          },
-          {
-            title: `カリキュラムについて`,
-            slug: `/about`,
-          },
-          {
-            title: `資料`,
-            slug: `/about`,
-          },
-          {
-            title: `利用規約`,
-            slug: `/terms`,
-          },
-          {
-            title: `プライバシーポリシー`,
-            slug: `/policy`,
-          },
-          {
-            title: `会社概要`,
-            slug: `/company`,
-          },
+          // {
+          //   title: `会社概要`,
+          //   slug: `/company`,
+          // },
+          // {
+          //   title: `利用規約`,
+          //   slug: `/terms`,
+          // },
+          // {
+          //   title: `個人情報保護方針`,
+          //   slug: `/policy`,
+          // },
           {
             title: `JavaScript基礎講座`,
             slug: `/javascript_basics`,
           },
           {
-            title: `お申し込み`,
-            slug: `/apply`,
+            title: `開発塾`,
+            slug: `/developer_program`,
+          },
+          // {
+          //   title: `お申し込み`,
+          //   slug: `/apply`,
+          // },
+          {
+            title: `Blog`,
+            slug: `/blog`,
           },
         ],
         externalLinks: [
           {
-            name: `Twitter`,
+            name: `X-HACKについて`,
             url: `https://twitter.com/xhackjp1`,
           },
         ],
