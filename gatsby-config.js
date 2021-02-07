@@ -26,37 +26,11 @@ module.exports = {
     ],
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [
-    //     {
-    //       resolve: "gatsby-remark-external-links",
-    //       options: {
-    //         target: "_self",
-    //         rel: "nofollow"
-    //       }
-    //     }
-    //     ]
-    //   }
-    // },
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
       options: {
         navigation: [
-          // {
-          //   title: `会社概要`,
-          //   slug: `/company`,
-          // },
-          // {
-          //   title: `利用規約`,
-          //   slug: `/terms`,
-          // },
-          // {
-          //   title: `個人情報保護方針`,
-          //   slug: `/policy`,
-          // },
           {
             title: `JavaScript基礎講座`,
             slug: `/javascript_basics`,
@@ -65,10 +39,6 @@ module.exports = {
             title: `開発塾`,
             slug: `/developer_program`,
           },
-          // {
-          //   title: `お申し込み`,
-          //   slug: `/apply`,
-          // },
           {
             title: `Blog`,
             slug: `/blog`,
