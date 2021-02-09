@@ -1,0 +1,180 @@
+---
+title: 配列操作をマスターする
+slug: "/javascript_basics/extras/array"
+---
+
+さあ、**配列操作**をマスターしましょう.
+配列操作は実務でも頻出です.
+
+## 用語集
+
+- メソッド
+- for, foreach
+- map, filter … など
+
+## 復習：メソッドとは
+
+オブジェクトが持つデータのことを**プロパティ**と言います.
+
+```
+var obj = { name: "松田信介", age: 34 } // name と age プロパティ
+```
+
+プロパティの中身が関数オブジェクトである場合、特別にメソッドと呼ぶことがあります.
+メソッドの書き方はいくつかありますので、下に例示しておきます.
+
+```
+var obj = {
+    name: "松田信介", // name プロパティ
+    age: 34, // age プロパティ
+　
+    // メソッドの書き方はどちらの書き方でもOK!
+    hello1: function () { // hello1 メソッド
+        return "こんにちは," + this.name + "です."
+    },
+    hello2() { // hello2 メソッド
+        return "こんにちは," + this.name + "です."
+    }
+}
+　
+obj.hello1() // こんにちは,松田信介です.
+obj.hello2() // こんにちは,松田信介です.
+```
+
+結局のところ、map や filter などの **Arrayオブジェクトが持つメソッド** も **関数オブジェクトを理解しているか？** だけの話です.
+
+関数オブジェクトを理解していれば、全く何も難しいところはありません.
+それどころか、必要なら**map** や **filter** を「自作できる」はずです.
+
+## 配列はArrayオブジェクト
+
+まずは、復習.
+
+```
+var arr = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+　
+// オブジェクト
+console.log(typeof arr)
+　
+// length は Arrayオブジェクト が持つ プロパティ です 戻り値は配列の要素数
+console.log(arr.length) // 10
+　
+// includes は Arrayオブジェクト が持つ メソッド です 戻り値は true/false(真偽値)
+arr.includes(5) // true
+arr.includes(8) // true
+arr.includes(11) // false
+```
+
+## 全ての配列に対して何かしらの処理をする
+
+### for を使う場合
+
+```
+var fruits = ["バナナ", "りんご", "ぶどう", "いちご", "パイナップル"]
+　
+for(let i=0; i < fruits.length; i++){
+    console.log(fruits[i]) // 全ての要素を表示する
+}
+```
+
+### foreach を使う場合
+
+foreachは配列の全ての要素に対して処理を実行できます.
+
+```
+var fruits = ["バナナ", "りんご", "ぶどう", "いちご", "パイナップル"]
+　
+// 関数オブジェクトを直接使う
+fruits.forEach((item) => {
+    console.log(item);
+});
+　
+// 関数オブジェクトを関数名を指定して使う
+function func(item) {
+    console.log("私は," + item + "が好きです");
+}
+　
+fruits.forEach(func) // こう書ける！！！
+　
+// 同じことを`for`を使って実現すると？
+for(let i=0; i < fruits.length; i++){
+    func(fruits[i]) // 全ての要素を表示する
+}
+```
+
+## Arrayオブジェクトが持つ様々な便利メソッド
+
+### map
+
+関数オブジェクトを引数に取り、その関数オブジェクトが配列のデータを順番に受け取って処理します.
+
+```
+var arr = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+arr.map((item) => {
+    console.log(item)
+})
+```
+
+戻り値は、配列データです
+
+```
+var arr = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+let squares = arr.map((item) => {
+    return item*item
+})
+console.log(squares) // [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+```
+
+**関数オブジェクト**をきちんと理解していれば全く難しくないはずです.
+
+### filter
+
+条件式に一致するものだけの新しい配列を作成する
+
+1. 短い書き方(単純な条件の場合にシンプルに書ける)
+
+```
+var arr = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+var result = arr.filter(item => item % 3 === 0)
+　
+result // [3, 6, 9]
+```
+
+2. 処理が複数の行に及ぶ場合の書き方
+
+```
+var arr = [1, 2, 3, 4, 5, 6 , 7, 8, 9, 10]
+var result = arr.filter(item => {
+    // 3 or 5 の倍数か？
+    if(item % 3 === 0 || item % 5 === 0){
+        return true
+    }
+})
+　
+result // [3, 5, 6, 9, 10]
+```
+
+**map()** や **filter()** 以外にも配列を書き換える(or 新たな配列を生成する)便利なメソッドが沢山あります。
+MDNを読んで使ってみましょう.
+
+map や filter は もし必要なら for を使って似た機能を自分で実装することも可能です.
+ただ、自力で実装するより標準で用意されているものを使った方が便利なので、余程のことがなければ標準のものを使うようにしてください.
+
+```
+// foreach を使って filterメソッド のように 結果が欲しければ…
+var fruits = ["バナナ", "りんご", "ぶどう", "いちご", "パイナップル"]
+　
+let newArr = []
+function func(item) {
+    let message = "私は," + item + "が好きです"
+    newArr.push(message)
+    console.log(message);
+}
+　
+fruits.forEach(func)
+console.log(newArr[2])
+```
+
+## Arrayについて
+
+- [MDN Array](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array)

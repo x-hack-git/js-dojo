@@ -1,0 +1,161 @@
+---
+title: thisとアロー関数の関係について
+slug: "/javascript_basics/extras/this"
+---
+
+JavaScriptの**this**は非常に厄介です。多くの初心者は混乱します。
+最初から完全に理解しようとするのは得策ではありません。
+
+**オブジェクト**や**スコープ**の理解が完全でない場合、thisを理解しようとしないでください。
+
+　
+
+---
+
+　
+- **this**はオブジェクトを指すが、どのオブジェクトであるかは**関数の呼ばれ方**によって決定する
+- **アロー関数は自身で `this` を持たない**
+- **アロー関数式は、メソッドでない関数に最適**(メソッドでは使わない方がいい場合が多い)
+- **迷ったらconsole.logで確認**
+
+まずは、これだけしっかり覚えてください。
+
+そして、**迷ったら this が何を指すか確認**するようにすれば、プログラミングを書く際に大きな問題にはなりません。不安なら this が何か確認して、予期しないコードにならないように注意するのが安全です。
+　
+
+---
+
+　
+
+まず簡単な this の実際のコード例を見てみます。
+下記の二つのコード、違いは関数の書き方だけです。
+
+①のコードはうまく動作しますが、②のコードはうまく動作しません。
+
+```
+// ①functionキーワードを使った宣言
+var obj = {
+    name: "夏目漱石",
+    birthday: "１８６７/02/09",
+    introduction: function() { // 関数式
+    console.log(this.name + "は" + this.birthday + "生まれです" )
+    console.log(this) // thisを確認
+    }
+}
+```
+
+```
+// ②アロー関数
+var obj = {
+    name: "夏目漱石",
+    birthday: "１８６７/02/09",
+    introduction: () => { // アロー関数
+    console.log(this.name + "は" + this.birthday + "生まれです" )
+    console.log(this) // thisを確認
+    }
+}
+```
+
+②の this は予想に反して、**windowオブジェクト**を指しています。
+
+functionを使った関数と、アロー関数との一番重要な違いはここです。
+
+**アロー関数自身は `this` を持ちません、なので一つ外側のスコープで `this` 値を探します。**
+
+[アロー関数についてもっと詳しくはMDNで！]
+
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+## アロー関数が有効な例
+
+下記のコードの場合、**setInterval** は windowオブジェクトのメソッドです。
+
+```
+var obj = {
+    name: "夏目漱石",
+    birthday: "１８６７/02/09",
+    intervalId: null,
+    delayIntroduction: function () {
+        this.intervalId = setInterval(function () {
+            console.log(this.name + "は" + this.birthday + "生まれ" );
+        }, 1000);
+    },
+    stopIntroduction: function () {
+    clearInterval(this.intervalId)
+    }
+}
+```
+
+**setInterval** の引数にセットしている関数内部の this は window オブジェクトを指します。なので、上記のコードは**思うように動作しません**。
+なぜなら、**setInterval** は windowオブジェクトのメソッドだからです！
+
+```
+setInterval(function () {
+    console.log(this.name + "は" + this.birthday + "生まれ" ); // thisはwindowオブジェクト
+}, 1000);
+```
+
+下記のようにアロー関数を使うと、うまく動作します
+一つ外側のオブジェクトを指すからです！
+
+```
+var obj = {
+    name: "夏目漱石",
+    birthday: "１８６７/02/09",
+    intervalId: null,
+    delayIntroduction: function () {
+        this.intervalId = setInterval(() => {
+            console.log(this.name + "は" + this.birthday + "生まれ" );
+        }, 1000);
+    },
+    stopIntroduction: function () {
+    clearInterval(this.intervalId)
+    }
+}
+```
+
+## アロー関数はES6で登場した新しい書き方です。
+
+1. 関数を短く書きたい
+2.  `this` をオブジェクトに紐付けたくない(thisを束縛したくない)
+
+という理由でアロー関数構文が生まれました。
+1 は分かるとして、2は分かりにくいです。
+
+## thatを使った回避方法(ES6以前)
+
+アロー関数がない場合は、このようにして this をうまく扱っていました
+
+```
+var obj = {
+    name: "夏目漱石",
+    birthday: "１８６７/02/09",
+    intervalId: null,
+    delayIntroduction: function () {
+    var that = this
+        this.intervalId = setInterval(function () {
+            console.log(that.name + "は" + that.birthday + "生まれです" );
+        }, 1000);
+    },
+    stopIntroduction: function () {
+    clearInterval(this.intervalId)
+    }
+}
+```
+
+かなり難しいので、今はまだ理解できなくても大丈夫です！！
+
+JavaScriptの仕様を全て紹介するととんでもないボリュームになるので、JavaScriptの基礎を知るために必要最低限の内容に絞っています。悪しからずご了承ください。
+
+まずは「プログラミングの概念を理解する」ことに注力しましょう。
+
+---
+
+　
+
+余談
+
+　
+
+「this」は5-10年くらいプログラミングやってる人でも、雰囲気で書いてる人大勢います！
+上級者になるためには必須ですが、初心者〜中級者だと一旦は脇に置いておいても良いと思っています。

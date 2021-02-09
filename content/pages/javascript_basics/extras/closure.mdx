@@ -1,0 +1,156 @@
+---
+title: クロージャについて
+slug: "/javascript_basics/extras/closure"
+---
+
+## 用語集
+
+- カプセル化
+- スコープ
+- クラス
+- プライベートな変数
+
+## スコープ
+
+まずJavaScriptは関数ごとにスコープが作られます。
+スコープとは「変数を参照できる範囲」のことです。
+
+```
+function func() {
+    var value = 1;
+    console.log(value);
+}
+func(); // 1
+console.log(value); // undefined
+```
+
+## 先に結論
+
+「クロージャ」という名前に惑わされないでください。「オブジェクトがプロパティを持てる」ということと同様に考えてOKです。
+
+違いは、「外部からその変数にアクセスできない/変更できないこと」です。
+この特徴により、その関数内部でのみ使用する変数をグローバル変数として定義する必要性をなくし、さらに外部から意図しない変更が加わることを防げます。
+
+クロージャを使うことで、より可読性が高く、安全なコードを書くことができます。
+
+## クロージャの使い方
+
+例えば、関数が何回呼び出されたかを数えたい場合に
+
+通常の関数で書くと
+
+```
+var count = 0
+function someFunc() {
+    count++
+    console.log(count + "回目の呼び出し")
+}
+　
+someFunc() // 1回目の呼び出し
+someFunc() // 2回目の呼び出し
+　
+count = 5 // 意図しない変更
+someFunc() // 6回目の呼び出し ...??
+```
+
+クロージャで書くと
+
+```
+var createCounter = () => {
+    let privateCount = 0
+    return () => {
+        privateCount++;
+        return `${privateCount}回目の呼び出し`
+    }
+}
+　
+counter = createCounter()
+counter() // 1回目の呼び出し
+counter() // 2回目の呼び出し
+　
+counter.privateCount = 5 // 変更されない
+counter() // 3回目の呼び出し
+```
+
+関数内部でしか使わないことを想定している関数の場合、クロージャの方が安全に記述できることがわかりますね。
+
+グローバル変数に宣言しても同様の機能は得られますが、書き換えることができてしまうので、注意してコードを書く必要があります。また、グローバル変数も増えてしまうのでコードが巨大になっていくと管理が大変になってきます。
+
+## クロージャ
+
+関数閉包(クロージャ)はプログラミング言語における関数オブジェクトの一種です。 引数以外の変数を実行時の環境ではなく、自身が定義された環境（静的スコープ）において解決することを特徴とするものです。
+
+## クロージャを使うメリット
+
+1. 関数が状態を持てるようにする
+2. 外から参照できない関数を定義する
+3. グローバル変数を減らす
+
+
+## 関数に状態をもたせるとは？
+
+### クラスで書くと
+
+変数名の先頭に # をつけると、privateな変数として宣言できます。
+詳しくは下記サイトでご確認ください。
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields
+
+```
+class Counter {
+    #privateCount // プライベートな変数
+　
+    constructor() {
+        #privateCount = 0
+    }
+　
+    execute () {
+        this.privateCount++;
+        return `${#privateCount}回目`
+    }
+}
+　
+counter = new Counter()
+counter.execute() // "1回目"
+counter.execute() // "2回目"
+```
+
+## 関数が状態(ステート)を持てると何が嬉しいか？
+
+状態によって実行する関数を切り替えられるので嬉しい。
+関数を呼び出す側は、状態を考慮しなくて良い点が良い。
+(補足)デザインパターンの「ステートパータン」について学習すると、効果が理解しやすいかもしれません。
+
+```
+class Mother {
+    constructor (state) {
+        this.state = state
+    }
+　
+    sayHello () {
+        if (this.state == "happy") {
+            // 機嫌が良い時
+            console.log("おはよう、今日もいい天気ね")
+        } else if (this.state == "angry") {
+            // 機嫌が悪い時
+            console.log("学校におくれますよ！！いそぎなさい!!")
+        }
+    }
+　
+    action () {
+    if (this.state == "happy") {
+        // 機嫌が良い時
+        console.log("一緒にケーキを食べましょう♪")
+    } else if (this.state == "angry") {
+        // 機嫌が悪い時
+        console.log("早く宿題をやりなさい！！")
+    }
+    }
+}
+　
+let mother1 = new Mother("happy")
+let mother2 = new Mother("angry")
+　
+mother1.action() // action実行する
+mother2.action() // action実行する
+```
