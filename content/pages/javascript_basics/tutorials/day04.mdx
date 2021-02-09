@@ -33,13 +33,13 @@ slug: "/javascript_basics/tutorials/day04"
 
 オブジェクトの宣言方法は下記です。たったこれだけ。
 
-```
+```js
 {}
 ```
 
 確認してみましょう
 
-```
+```js
 typeof {} // "object"
 ```
 
@@ -47,7 +47,7 @@ typeof {} // "object"
 
 ## オブジェクトは変数に格納できます
 
-```
+```js
 // 例1
 var obj = {}
 // 例2
@@ -58,7 +58,7 @@ var person = {}
 
 > 比較演算子(== ,!= , <, > など)については別途紹介します
 
-```
+```js
 var obj1 = {}
 var obj2 = {}
 　
@@ -80,7 +80,7 @@ if (obj1 === obj2) {
 
 宣言時に指定する方法
 
-```
+```js
 var obj = { name: "matsuda shinsuke", age: 34 }
 　
 obj // {name: "matsuda shinsuke", age: 34}
@@ -90,7 +90,7 @@ obj // {name: "matsuda shinsuke", age: 34}
 
 . (ドット) を使用してプロパティに値をセットする
 
-```
+```js
 var obj = {}
 obj.name = "matsuda shinsuke"
 obj.age = 34
@@ -102,7 +102,7 @@ obj // {name: "matsuda shinsuke", age: 34}
 
 ハッシュ（連想配列）を使用してプロパティに値をセットする
 
-```
+```js
 var obj = {}
 obj['name'] = "安達祐実"
 obj['age'] = 39
@@ -115,7 +115,7 @@ obj // { name: "安達祐実", age: 39, profile: 'She is an actress.' }
 
 ES2015からの機能。**プロパティ名**と値に指定する**変数名**が同じ場合、省略して書ける。
 
-```
+```js
 var name = "matsuda shinsuke"
 var age = 34
 // var obj = { name: name, age: age }
@@ -136,7 +136,7 @@ JavaScript のオブジェクトは、自身に関連付けられた**プロパ�
 
 プロパティの中身をプログラム内で使用することを「取り出す」「アクセスする」「参照する」などと表現しますが意味はだいたい同じです。今は「同じ」だと思ってて問題ないです。
 
-```
+```js
 // obj が持つ name という プロパティ を取り出す(アクセスする、参照する)
 obj.name
 　
@@ -144,7 +144,7 @@ var name = obj.name // 変数に格納
 obj.name = "アイウエオ" // 書き換える
 ```
 
-```
+```js
 var obj = {
     name: "松田信介",
     age: 34,
@@ -158,7 +158,7 @@ console.log(obj.company_name) // 株式会社X-HACK
 
 ### 連想配列のkeyを指定して取り出すこともできます
 
-```
+```js
 var obj = {
     name: "安達祐実",
     age: 39
@@ -170,13 +170,13 @@ console.log(obj['age']) // 39
 
 プロパティの中身にアクセスするには、**どのオブジェクトが持つプロパティかを指定する**必要があります。
 
-```
+```js
 var obj = { name: "松田信介" }
 console.log(name) // undefined
 console.log(obj.name) // 松田信介
 ```
 
-```
+```js
 var obj1 = { name: "松田信介" }
 var obj2 = { name: "織田信長" }
 console.log(obj1.name) // 松田信介
@@ -190,7 +190,7 @@ console.log(obj2.name) // 織田信長
 
 中括弧 (or 波括弧、or カーリーブラケット)
 
-```
+```js
 {} // 中括弧を使う
 ```
 
@@ -198,7 +198,7 @@ console.log(obj2.name) // 織田信長
 
 **key と value は : (コロン) で繋ぎます**
 
-```
+```js
 // データの名前: 実際のデータ
 // key: value 形式と表現することもあります
 { name: "松田信介" }
@@ -208,7 +208,7 @@ console.log(obj2.name) // 織田信長
 
 カンマで区切ります.
 
-```
+```js
 // 複数ある場合はカンマで区切ります
 // key: value, key: value, ...
 { name: "松田信介", age: 34 }
@@ -224,7 +224,7 @@ console.log(obj2.name) // 織田信長
 オブジェクトには関数もセットできます。そして**関数もオブジェクト**です。関数の解説の時に改めて解説します。
 **オブジェクトのプロパティに関数(正確には関数オブジェクト)をセットできる**と覚えておいてください。
 
-```
+```js
 // obj が sayHello という プロパティ を持つ
 var obj = {
     sayHello: ...
@@ -247,7 +247,7 @@ obj.sayHello()
 
 これが非常に便利なのですが、まだ説明するための材料が十分に揃っていません。現時点ではさらっと理解しておいてください。
 
-```
+```js
 // name と sayHello プロパティ を持つオブジェクト
 var obj = {
     name: "松田信介",

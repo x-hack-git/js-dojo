@@ -28,7 +28,7 @@ attribute（アトリビュート）とも。
 `id=` でタグにIDを付与します。
 HTML文書内で固有である（ユニークである）必要があるので、同じIDが同一HTML文書内に**複数存在してはいけません**。
 
-```
+```js
 <h1 id="main">タイトル</h1>
 ```
 
@@ -37,7 +37,7 @@ HTML文書内で固有である（ユニークである）必要があるので�
 
 `href` / `src` / `hidden` / `style`なども **HTMLの属性の一つ** です。
 
-```
+```js
 <h1 class="header title">メインタイトル</h1>
 <h2 class="header sub-title">サブタイトル</h1>
 ```
@@ -46,7 +46,7 @@ HTML文書内で固有である（ユニークである）必要があるので�
 ## HTMLから要素を取得するには？
 下記を例に見ていきましょう。まずはシンプルなHTML文書です。
 
-```
+```js
 <html>
     <head>
     <title>Page Title</title>
@@ -64,7 +64,7 @@ HTML文書内で固有である（ユニークである）必要があるので�
 ### getElementById
 - IDを指定して要素を取得する `Element` と**単数形**になっていることに注意
 
-```
+```js
 // idを指定して要素を取得する、「オブジェクト」が返ってきます
 // idはHTML文書に一つしか存在しない想定なので、必ず単一の要素が返ってきます
 var body = document.getElementById("top")
@@ -79,7 +79,7 @@ var body = document.getElementById("top")
 #### getElementsByTagName
 - タグの名前を指定して要素を取得する `Elements` と**複数形**であることに注意
 
-```
+```js
 // タグを指定して要素を取得する、「オブジェクトの配列」が返ってきます
 // `h1` や `p` はhtml内に複数あるため、該当する全ての要素を取得する
 var h1 = document.getElementsByTagName("h1")
@@ -90,7 +90,7 @@ var h1 = document.getElementsByTagName("h1")
 #### getElementsByClassName
 - クラスの名前を指定して要素を取得する `Elements` と**複数形**であることに注意
 
-```
+```js
 // クラスを指定して要素を取得する、「オブジェクトの配列」が返ってきます
 // クラス属性はhtml内に複数あるため、該当する全ての要素を取得する
 var main = document.getElementsByTagName("main")
@@ -136,32 +136,31 @@ Canvasを使うと絵を描いたり、写真を加工したりといった機�
 
 ### 下記HTMLをindex.htmlファイルとして任意の場所に保存し、ブラウザで開く
 
-```
+```js
 <html>
     <head>
     <title>CANVAS</title>
     <style>
         body {
-        background-color: black;
-        text-align: center;
+            background-color: black;
+            text-align: center;
         }
         #canvas {
-        background-color: darkgray;
+            background-color: darkgray;
         }
     </style>
     </head>
     <body>
-    <canvas id="canvas" width="400" height="400"></canvas>
+        <canvas id="canvas" width="400" height="400"></canvas>
     </body>
-    </html>
-</prism>
+</html>
 ```
 
 ![](~/assets/images/11day_02.png)
 
 ### 下記のコードをコンソールで実行する
 
-```
+```js
 // コンソールで実行してみよう
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')

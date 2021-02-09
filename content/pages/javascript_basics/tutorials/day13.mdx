@@ -12,7 +12,7 @@ slug: "/javascript_basics/tutorials/day13"
 ###  toString(16) とは？
 10進数で表現された数字を16進数に変換する関数。数値型(Number型)の変数の時に使えるメソッドです。
 
-```
+```js
 var num1 = 165;
 console.log(num1.toString(16)) // a5
 　　
@@ -24,7 +24,7 @@ console.log(num2.toString(16)) // eb
 引数として与えた数以下の最大の整数を返します。(小数を整数に変換する)
 詳しくは MDN で Math.floorの項目を見ましょう。
 
-```
+```js
 console.log(Math.floor(1.123413)) // 1
 console.log(Math.floor(33.123413)) // 33
 ```
@@ -33,7 +33,7 @@ console.log(Math.floor(33.123413)) // 33
 0 以上 1 未満の疑似乱数を返す。
 詳しくは MDN で Math.randomの項目を見ましょう。
 
-```
+```js
 Math.random() // 0~1未満の乱数が返る
 256*Math.random() // 0~256未満の乱数が返る
 ```
@@ -54,7 +54,7 @@ Math.random() // 0~1未満の乱数が返る
 
 ##  forを使ってたくさん四角形を書いてみよう
 
-```
+```js
 // 前回作成したHTMLで実行すること！！
 // コンソールで実行してみよう
 var canvas = document.getElementById('canvas')
@@ -87,7 +87,7 @@ function randomColorCode() {
 
 ##  setIntervalを使って一定間隔で四角形を沢山書く関数を実行しよう
 
-```
+```js
 // 前回作成したHTMLで実行すること！！
 // コンソールで実行してみよう
 // 自分なりに書き換えてみよう
@@ -128,7 +128,7 @@ function randomColorCode() {
 アロー関数は無名関数の一種です。（無名関数の省略記法）
 callback関数を定義する時によく使われます。
 
-```
+```js
 // 無名関数の書き方 () は引数、 {} に処理
 　
 // ① (引数, ...) => { 処理 }
@@ -150,7 +150,7 @@ func(100)
 
 - **パターン1**
 
-```
+```js
 function sayHello(message) {
     console.log(message)
 }
@@ -160,7 +160,7 @@ setInterval( sayHello , 200, "hello" )
 
 - **パターン2**
 
-```
+```js
 setInterval( () => { console.log("hello") }, 200 )
 ```
 
@@ -193,7 +193,7 @@ DOMを使用すると、JavaScriptは動的にHTMLを作成するために必要
 - JavaScriptは、ページ内のすべての既存のHTMLイベントに反応することができます
 - JavaScriptは、ページ内の新しいHTMLイベントを作成することができます
 
-```
+```js
 <html>
     <body>
 　　
@@ -219,7 +219,7 @@ DOMを使用すると、JavaScriptは動的にHTMLを作成するために必要
 
 ####  onclickのサンプルコード
 
-```
+```js
 <html>
     <body>
     <button onclick="func()">ボタン Click me!</button>

@@ -15,7 +15,7 @@ slug: "/javascript_basics/extras/closure"
 まずJavaScriptは関数ごとにスコープが作られます。
 スコープとは「変数を参照できる範囲」のことです。
 
-```
+```js
 function func() {
     var value = 1;
     console.log(value);
@@ -39,7 +39,7 @@ console.log(value); // undefined
 
 通常の関数で書くと
 
-```
+```js
 var count = 0
 function someFunc() {
     count++
@@ -55,7 +55,7 @@ someFunc() // 6回目の呼び出し ...??
 
 クロージャで書くと
 
-```
+```js
 var createCounter = () => {
     let privateCount = 0
     return () => {
@@ -96,7 +96,7 @@ counter() // 3回目の呼び出し
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields
 
-```
+```js
 class Counter {
     #privateCount // プライベートな変数
 　
@@ -121,7 +121,7 @@ counter.execute() // "2回目"
 関数を呼び出す側は、状態を考慮しなくて良い点が良い。
 (補足)デザインパターンの「ステートパータン」について学習すると、効果が理解しやすいかもしれません。
 
-```
+```js
 class Mother {
     constructor (state) {
         this.state = state

@@ -21,7 +21,7 @@ slug: "/javascript_basics/tutorials/day05"
 
 **「オブジェクト」** と **「プロパティ」** という名前に慣れてください。
 
-```
+```js
 var matsudaShinsuke = { name: "松田信介" } // ここがプロパティ keyは`name` valueは`松田信介`
 obj.name // これもプロパティ(nameは `objオブジェクト`のプロパティ)
 ```
@@ -32,7 +32,7 @@ obj.name // これもプロパティ(nameは `objオブジェクト`のプロパ
 
 何度も登場していますコチラのコード
 
-```
+```js
 console.log("HELLO")
 ```
 
@@ -42,7 +42,7 @@ console.log("HELLO")
 `.log` とは なんでしょうか？
 `("hello")`  とはなんでしょうか？
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　
 typeof console
@@ -66,7 +66,7 @@ typeof console.log
 
 百聞は一見に如かず、まずはいつものようにconsoleタブで試してみます。
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　
 var a = 100
@@ -81,7 +81,7 @@ console.log(this.a) // 200
 
 ## では、ここの`this`とはなんでしょう？
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　
 this
@@ -108,7 +108,7 @@ this
 
 これもいける！
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　
 this.window.console.log("hello")
@@ -116,7 +116,7 @@ this.window.console.log("hello")
 
 どうやら同じ動きをするようですね。(同じオブジェクトを指している・・・？)
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 // 全部同じ意味です！
 　　　　　　
@@ -128,7 +128,7 @@ this.window.console.log("hello")
 
 では下記のように書くとどうなるでしょうか？
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　　
 // オブジェクトの中に二つ関数があり、関数内でthisを使う
@@ -152,7 +152,7 @@ var obj = {
 
 これならOK
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　
 var obj = {
@@ -219,7 +219,7 @@ var obj = {
 
 またはJavaScriptで
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　
 // parseInt は 十進数に変換ができる関数

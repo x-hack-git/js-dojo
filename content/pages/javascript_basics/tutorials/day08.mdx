@@ -26,7 +26,7 @@ slug: "/javascript_basics/tutorials/day08"
 
 可能な限り === を使いましょう
 
-```
+```js
 // consoleで試そう
 　　
 // 一致するか比較する
@@ -49,7 +49,7 @@ a == c // false
 
 ### `===` (データ型まで一致、厳密な比較)
 
-```
+```js
 // consoleで試そう
 　
 // 一致するか比較する
@@ -60,7 +60,7 @@ a == c // false
 ## オブジェクトの比較
 オブジェクトは中身のデータが一緒でも、参照するオブジェクトが一緒じゃない場合 false になります。ここは重要なので覚えておいてください。
 
-```
+```js
 var a = {}
 var b = {}
 　
@@ -70,7 +70,7 @@ var c = a
 a == c // true
 ```
 
-```
+```js
 // 試してみよう
 var a = {}
 var b = a // a と b は同じ
@@ -83,7 +83,7 @@ console.log(a === b)
 
 ### `<`・`>`・`<=`・`=>` (大小比較)
 
-```
+```js
 // consoleで試そう
 　　
 var a = 100
@@ -100,7 +100,7 @@ a < 99   // aは９９より小さい false
 詳しくはこちら！
 - [MDN if...else](https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/if...else)
 
-```
+```js
 if (条件式) { 条件を満たす時に実行する処理 }
 　　
 // サンプルプログラム  　
@@ -113,14 +113,14 @@ if (a > 100) {
 
 一行で書くこともできます
 
-```
+```js
 // {} が省略できます
 if (a > 100) console.log("aは100より大きい")
 ```
 
 ## `if` ~ `else`
 
-```
+```js
 var a = 100
 if (a > 100) {
     console.log("aは100より大きい")
@@ -130,7 +130,7 @@ if (a > 100) {
 ```
 
 ## `if` ~ `else if` ~ `else`
-```
+```js
 var a = 100
 if (a > 100) {
     console.log("aは100より大きい") // 実行されない
@@ -145,7 +145,7 @@ if (a > 100) {
 
 ### `&&` と `||`
 
-```
+```js
 var a = true
 var b = true
 var c = false
@@ -160,7 +160,7 @@ if (a || b) {
 ```
 
 ### 複数条件指定するときは、`( )`を使ってわかりやすく書く
-```
+```js
 if (a || b && c) {
     // a が true または b,c どちらかも true
 }
@@ -186,7 +186,7 @@ if ((a || b) && c) {
 
 JavaScriptの場合、数値が0以外は全て`true`、0のみ`false`です
 
-```
+```js
 var a = 100;
 if(a) {
     console.log("aはtrue?")
@@ -199,7 +199,7 @@ if(a) {
 
 `""` 空文字の場合`false`、それ以外は `true`
 
-```
+```js
 var a = "hello";
 if(a) {
     console.log("aはtrue.")
@@ -209,7 +209,7 @@ if(a) {
 // aはtrue.
 ```
 
-```
+```js
 var a = "";
 if(a) {
     console.log("aはtrue.")
@@ -224,7 +224,7 @@ if(a) {
 JavaScript (ECMA-262)
 false（偽）になるものは下記のみ。
 
-```
+```js
 false
 undefined
 null
@@ -239,7 +239,7 @@ null
 
 材料からカレーが作れるかを判定する
 
-```
+```js
 var materials1 = [
     { name: "じゃがいも", quantity: 2 },
     { name: "人参", quantity: 3 },

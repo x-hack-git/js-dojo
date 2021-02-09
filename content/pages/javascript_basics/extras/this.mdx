@@ -32,7 +32,7 @@ JavaScriptの**this**は非常に厄介です。多くの初心者は混乱し�
 
 ①のコードはうまく動作しますが、②のコードはうまく動作しません。
 
-```
+```js
 // ①functionキーワードを使った宣言
 var obj = {
     name: "夏目漱石",
@@ -44,7 +44,7 @@ var obj = {
 }
 ```
 
-```
+```js
 // ②アロー関数
 var obj = {
     name: "夏目漱石",
@@ -70,7 +70,7 @@ https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_f
 
 下記のコードの場合、**setInterval** は windowオブジェクトのメソッドです。
 
-```
+```js
 var obj = {
     name: "夏目漱石",
     birthday: "１８６７/02/09",
@@ -89,7 +89,7 @@ var obj = {
 **setInterval** の引数にセットしている関数内部の this は window オブジェクトを指します。なので、上記のコードは**思うように動作しません**。
 なぜなら、**setInterval** は windowオブジェクトのメソッドだからです！
 
-```
+```js
 setInterval(function () {
     console.log(this.name + "は" + this.birthday + "生まれ" ); // thisはwindowオブジェクト
 }, 1000);
@@ -98,7 +98,7 @@ setInterval(function () {
 下記のようにアロー関数を使うと、うまく動作します
 一つ外側のオブジェクトを指すからです！
 
-```
+```js
 var obj = {
     name: "夏目漱石",
     birthday: "１８６７/02/09",
@@ -126,7 +126,7 @@ var obj = {
 
 アロー関数がない場合は、このようにして this をうまく扱っていました
 
-```
+```js
 var obj = {
     name: "夏目漱石",
     birthday: "１８６７/02/09",

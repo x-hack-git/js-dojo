@@ -8,7 +8,7 @@ slug: "/javascript_basics/tutorials/day14"
 
 1. 普通の関数 hello という名前で関数を生成する
 
-```
+```js
 function hello(name) {
     console.log("Hello, " + name + " さん")
 }
@@ -24,7 +24,7 @@ function hello(name) {
 
 3. 変数に格納して使う
 
-```
+```js
 var hello = (name) => {
     console.log("Hello, " + name + " さん")
 }
@@ -71,7 +71,7 @@ JavaScriptのタブ、HTMLのタブ、CSSタブ、Resultタブ、
 
 背景が変わるDOM操作
 
-```
+```js
 var func1 = () => {
     var body = document.getElementsByTagName("body")
     if(body[0].style.backgroundColor == "red"){
@@ -86,7 +86,7 @@ var func1 = () => {
 画像タグ(img)をHTMLに一つ配置し、画像データが切り替わるコードを書いてみましょう。
 DOMを取得するコードはバッチリですか？
 
-```
+```js
 img.src = "https://..."
 ```
 

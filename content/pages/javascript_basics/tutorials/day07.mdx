@@ -17,7 +17,7 @@ slug: "/javascript_basics/tutorials/day07"
 ## 関数は第一級オブジェクトなので、変数に格納できる
 第一級オブジェクトという言い方に引っかかるかもしれませんが、要するに **「普通のオブジェクトと同じ」** という意味です！
 
-```
+```js
 // こんな風に`宣言`と`格納`を一行で書くこともできます、「関数式」と言います
 var fuga = function (){
     return 1 + 1
@@ -29,7 +29,7 @@ console.log(a)
 
 ## 関数オブジェクトは他の関数の引数として渡せる
 
-```
+```js
 var fuga = function hoge(){
     return 1 + 1
 }
@@ -50,14 +50,14 @@ console.log(fuga) // console.log は `関数` でしたね？ 覚えてますか
 
 MDNには下記のように書いてありますが、こちらの読み方はまた後日・・・
 
-```
+```js
 var intervalID = scope.setInterval(func, delay[, param1, param2, ...]);
 var intervalID = scope.setInterval(code, delay);
 ```
 
 ### 試してみよう
 
-```
+```js
 // Consoleで試してみよう
 var n = 0
 function func (){
@@ -70,7 +70,7 @@ var intervalId = setInterval(func, 200) // 200ms毎に `hello` と出力され�
 
 止めたい時は・・・
 
-```
+```js
 clearInterval(intervalId) // intervalIdを指定して繰り返しを止める
 ```
 
@@ -81,7 +81,7 @@ clearInterval(intervalId) // intervalIdを指定して繰り返しを止める
 
 `() => {} // 何もしないアロー関数`
 
-```
+```js
 var n = 0
 var intervalId = setInterval(() => {
     n += 1
@@ -107,7 +107,7 @@ var intervalId = setInterval(() => {
 
 ## 練習：関数を指定した回数だけ実行できる関数を定義する
 
-```
+```js
 // loopFunctionは、関数(func)と関数の実行回数を引数に取る
 // この関数は、引数で指定した関数を指定回数だけ実行する
 function loopFunction (func, count) {

@@ -44,7 +44,7 @@ bodyタグの終了の直前にJavaScriptを記載しましょう！
 canvas に対して図形を描画する機能を持ったオブジェクトです！
 四角形などを描画した結果のオブジェクトではありません。
 
-```
+```js
 // id=canvasはcanvasタグ
 var canvas = document.getElementById('canvas')
 var ctx = canvas.getContext('2d')
@@ -53,7 +53,7 @@ ctx.fillRect(50, 50, 50, 50) // このオブジェクトのメソッドを使い
 
 何個宣言しても同じものを参照します。
 
-```
+```js
 // id=canvasはcanvasタグ
 var canvas = document.getElementById('canvas')
 var ctx1 = canvas.getContext('2d')

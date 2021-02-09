@@ -29,7 +29,7 @@ slug: "/javascript_basics/tutorials/day09"
 
 オブジェクトには`key`と`value`のペアでデータが入っていました。オブジェクトから特定の値を取り出したい場合はkeyを指定していました。
 
-```
+```js
 // オブジェクトの場合
 var obj = { name: "松田信介", age: 34 }
 obj.name // 松田信介
@@ -39,7 +39,7 @@ obj.age // 34
 配列は番号で指定します。
 **配列の要素は0からカウント**します。
 
-```
+```js
 // 配列の場合
 var arr = [81, 22, 37, 40]
 arr[0] // 0番目のデータ => 81
@@ -60,7 +60,7 @@ arr[1] // 1番目のデータ => 22
 
 宣言 `[]` でくくり、複数データがある場合はカンマで区切る
 
-```
+```js
 var fruits = ["りんご", "バナナ"];
 　　　　　
 console.log(fruits.length);
@@ -68,7 +68,7 @@ console.log(fruits.length);
 
 ## 配列の要素を取得する(index)
 
-```
+```js
 var first = fruits[0];
 // りんご
 　　　
@@ -78,14 +78,14 @@ var last = fruits[fruits.length - 1];
 
 ## 配列の長さを取得する(length)
 
-```
+```js
 console.log(fruits.length);
 // 3
 ```
 
 ## 配列に要素を追加する(push)
 
-```
+```js
 fruits.push("みかん");
 　　　
 console.log(fruits)
@@ -94,7 +94,7 @@ console.log(fruits)
 
 ## 配列の最後の要素を取り出す(pop)
 
-```
+```js
 var arr = [1, 2, 3, 4, 5]
 console.log(arr.pop()) // 5
 　　　
@@ -104,7 +104,7 @@ arr // [1, 2, 3, 4]
 配列の話は一旦ここまでです。
 配列を使うと複数の変数を宣言する必要がなくて、便利です。
 
-```
+```js
 var num1 = 100
 var num2 = 110
 var num3 = 120
@@ -145,7 +145,7 @@ var numbers = [100, 110, 120, 130, 140]
 
 ## 例えば変数`a`に`HELLO`という文字を格納した時
 
-```
+```js
 var message = "HELLO" // 変数 messageを宣言しHELLOという文字列を格納
 ```
 
@@ -158,7 +158,7 @@ var message = "HELLO" // 変数 messageを宣言しHELLOという文字列を格
 → 文字が入るメモリ領域(8bit)を5つ確保し、先頭に「H」2番目に「E」3番目に「L」4番目に「L」5番目に「0」という文字を格納した。文字の配列(文字列)としてアクセスできるように「message」という名前をそのメモリ領域につけた。
 ![HELLOがメモリに格納されているイメージ](~/assets/images/09day_02.jpeg)
 
-```
+```js
 var message = "HELLO"
 message[0] // H 配列は0からカウントする
 message[1] // E
@@ -178,13 +178,13 @@ message[4] // O
 
 ## for の書き方
 
-```
+```js
 for (初期条件; 処理を続行する条件; 処理が終わった後に実行する) {
     繰り返し実行したい処理
 }
 ```
 
-```
+```js
 var message = "HELLO" // 配列オブジェクト
 for (var n = 0; n < message.length; n++) {
     console.log(message[n])
@@ -202,7 +202,7 @@ for (var n = 0; n < message.length; n++) {
 
 ### 一行で書いてもOK
 
-```
+```js
 for(var i=0;i<5;i++) { console.log(i) }
 ```
 
@@ -210,13 +210,13 @@ for(var i=0;i<5;i++) { console.log(i) }
 
 改行してもしなくてもOK
 
-```
+```js
 for(var i=0;i<5;i++) {
     console.log(i)
 }
 ```
 
-```
+```js
 for(var i=0;i<5;i++)
 {
     console.log(i)
@@ -227,7 +227,7 @@ for(var i=0;i<5;i++)
 
 全て問題なく動作する
 
-```
+```js
 for (var i=0;i<5;i++) {}
 for(var i=0;i<5;i++){}
 for( var i=0; i<5; i++ ) {}
@@ -240,7 +240,7 @@ for のループが今何番目かをカウントするための変数のこと�
 下記のコードでは `num` がカウンタ変数と呼ばれたりします。
 普通の変数との違いは特にありません。forの中でカウンタとして使われる変数をそう呼ぶことがあるだけで、特別な変数ではありません。
 
-```
+```js
 for(var num = 0; num < 5; num++){
     // statement
 }

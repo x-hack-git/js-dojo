@@ -11,7 +11,7 @@ slug: "/javascript_basics/tutorials/day15"
 `moveTo`, `lineTo` などは適宜、MDNで調べてみてください。
 分からないことがあったら、 _とりあえずMDNをみる_ ように習慣化してください。
 
-```
+```js
 var canvas = document.getElementById("reversi")
 var ctx = canvas.getContext("2d")
 　　
@@ -57,7 +57,7 @@ for (let row = 0; row < 8; row++) {
 ヒント1：onclickイベントをcanvasタグに追加する
 ヒント2：onclickイベントが発生した座標が取れないかMDNを見てみる、Googleで検索してみる
 
-```
+```js
 function putStone(event){
     var rect = event.target.getBoundingClientRect();
     x = event.clientX - rect.left;

@@ -78,12 +78,12 @@ slug: "/javascript_basics/tutorials/day03"
 
 ### 試してみよう
 
-```
+```js
 // ブラウザで好きなサイトを開いてコンソールタブで下記のコードを実行してみよう
 document.getElementsByTagName("body")[0].style.backgroundColor = "rgb(199,129,35)"
 ```
 
-```
+```js
 // ブラウザで好きなサイトを開いてコンソールタブで下記のコードを実行してみよう
 document.getElementsByTagName("body")[0].style.backgroundColor = "#2fdd3c"
 ```
@@ -99,7 +99,7 @@ document.getElementsByTagName("body")[0].style.backgroundColor = "#2fdd3c"
 
 ## 下記のコードをデベロッパー・ツールのコンソールタブで実行してみましょう
 
-```
+```js
 // A-Zのアルファベットが出力される
 // 65 には アルファベットの「A」が割り当てられている
 for (let i=0; i < 26; i++) {
@@ -107,7 +107,7 @@ for (let i=0; i < 26; i++) {
 }
 ```
 
-```
+```js
 // あ〜ゖの平仮名が出力される
 // 12354 には 平仮名の「あ」が割り当てられている
 for (let i=0; i < 85; i++) {
@@ -129,7 +129,7 @@ JavaScript は動的型付け言語です
 JavaScriptとJavaで変数を宣言するコードを比較してみましょう。(念のためですが、JavaScriptとJavaは全く別の言語です。名前が似ているだけで何の関係もありません。ハムとハムスターくらい違います。)
 
 ### JavaScript(動的型付け言語)の変数宣言
-```
+```js
 var str = "Hello" // string型
 var i = 1 // number型
 var f = 1.1 // number型
@@ -137,7 +137,7 @@ var bool = true // boolean型
 ```
 
 ### Java(静的型付け言語)の変数宣言
-```
+```js
 String str = "Hello"; // String型
 int i = 1; // int型
 float f = 1e-1f; // 1×10^-1 float型
@@ -187,7 +187,7 @@ JavaScriptにはプリミティブ型のデータ型7つ+オブジェクトと�
 宣言した変数がどんな型なのか確認してみましょう。
 何度も言いますが、**コードが出てきたら、必ずコンソールタブで確認する癖を付けて下さい！**
 
-```
+```js
 var a
 typeof a
 // "undefined"

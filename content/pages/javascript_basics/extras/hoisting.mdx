@@ -12,7 +12,7 @@ JavaScriptは上から順番に実行されるのではないのか？
 
 **問題とされているコード…**
 
-```
+```js
 sample()
 　
 function sample(){
@@ -26,7 +26,7 @@ function sample(){
 
 **下記のように書いたのと同じになります。**
 
-```
+```js
 function sample(){
     console.log("hello")
 }
@@ -38,7 +38,7 @@ sample()
 
 疑問：下記のようなコードを書いたがログに`hello`と出力されない。
 
-```
+```js
 function sample(){
     console.log("hello")
 }
@@ -46,7 +46,7 @@ function sample(){
 
 関数は宣言した段階では、プログラムに対する指示書でしかありません。実行の命令をしなければ、指示書は単なるメモです。呼び出したい箇所で呼び出してあげてください。
 
-```
+```js
 // 関数の定義
 function sample(){
     console.log("hello")
@@ -62,7 +62,7 @@ sample() // 関数が実行される
 1. DOMを取得するJavaScriptを、HTMLより前に書いてしまう
 2. ライブラリの読み込みの前に、ライブラリを使用するコードを書いてしまう
 
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +86,7 @@ sample() // 関数が実行される
 
 JavaScriptは、なにはともあれbodyタグの閉じタグの直前に書いて置けば安心。
 
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -108,7 +108,7 @@ JavaScriptは、なにはともあれbodyタグの閉じタグの直前に書い
 
 windowの読み込み完了イベントが発火したタイミングでJavaScriptが動くようにする
 
-```
+```js
 <!DOCTYPE html>
 <html lang="en">
 <head>

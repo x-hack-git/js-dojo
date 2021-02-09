@@ -11,7 +11,7 @@ slug: "/javascript_basics/tutorials/day16"
 
 さあ、サンプルコードをいじって実際に確かめてみましょう。
 
-```
+```js
 var rect = event.target.getBoundingClientRect();
 x = event.clientX - rect.left;
 y = event.clientY - rect.top;
@@ -23,7 +23,7 @@ y = event.clientY - rect.top;
 
 現状のコードだと、マスの境目など中途半端な位置にも自由に石を配置出来てしまうので、下記のように修正します。
 
-```
+```js
 // 20 + 40n に配置されるようにすれば良い
 // % は 割り算の余りを取得する演算子
 // 例1. 158%40 なら 38 (158-38+20=140に配置すればマスに綺麗に収まる)

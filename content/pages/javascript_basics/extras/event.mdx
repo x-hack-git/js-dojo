@@ -126,13 +126,13 @@ BIOSがWindowsやMacOSなどを起動してくれています。近代的なコ�
 
 アプリケーション側は、画面に表示されたボタンなどの要素がどの位置にあるか？というデータを持っており、例えば ボタンA が
 
-```
+```js
 { x: 0, y:0, width:200, height:100 }
 ```
 
 に配置されているとすると、クリックした座標が
 
-```
+```js
 x: 0 ~ 200
 y: 0 ~ 100
 ```
@@ -153,7 +153,7 @@ y: 0 ~ 100
 
 そして、**event** にどんな情報が入っているかみてみましょう
 
-```
+```js
 // 書き方 その1
 document.getElementsByTagName("body")[0].onclick = btnClick
 　
@@ -164,7 +164,7 @@ function btnClick(event){
 }
 ```
 
-```
+```js
 // 書き方 その2
 var body = document.getElementsByTagName("body")[0]
 body.addEventListener("click", btnClick, false);
@@ -185,7 +185,7 @@ function btnClick(event){
 
 これだけをルールとして覚えておくと良いと思います。引数の名前は慣例的に `event` や `e` とすることが多いですが、通常の関数の引数と同様、**名前が変わっても問題はない**です。ただ、なるべくevent / e などの名前にしましょう。他の人が混乱するといけませんからね。
 
-```
+```js
 // どちらでもOK
 // event と名付ける
 function btnClick(event){ ... }
@@ -202,14 +202,14 @@ function btnClick(e){ ... }
 
 https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener
 
-```
+```js
 target.addEventListener(type, listener[, options]);
 target.addEventListener(type, listener[, useCapture]);
 ```
 
 この **type** には**利用可能なイベントの名称**が入ります
 
-```
+```js
 click, mousemove, drag ... など多数
 ```
 
@@ -218,14 +218,14 @@ https://developer.mozilla.org/ja/docs/Web/Events
 
 例1：第三引数はオプションなので省略
 
-```
+```js
 var button = document.getElementById("button")
 button.addEventListener("click", ()=> { console.log("hello") });
 ```
 
 例2：第三引数を明示
 
-```
+```js
 var button = document.getElementById("button")
 button.addEventListener("click", func, false);
 　
@@ -236,7 +236,7 @@ function func() {
 
 例3：
 
-```
+```js
 var button = document.getElementById("button")
 button.addEventListener("click", func, { capture: false, once: true});
 　
