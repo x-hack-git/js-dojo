@@ -1,0 +1,276 @@
+---
+title: 【10日目】DOM操作 その❶
+slug: "/javascript_basics/tutorials/day10"
+---
+
+前回は配列と制御構文についてやりました。変数・関数・オブジェクト・配列・if・forについて見てきましたが、いかがでしたか。
+
+実は、JavaScriptの基本構文に関しては、これまでの内容で8割くらい解説しました。まだ理解が曖昧な部分があると思いますが、細かい部分に関してはこれからの実践を通して身につけていきましょう。
+
+前回
+[+JavaScript道場：九日目 / 配列と制御構文 for](/tutorials/9th_day)
+
+今回は「DOM操作」です。これを理解するには今までやってきた**基礎の部分が非常に重要**です。
+
+## 用語集
+
+- DOM
+- モデリング
+- document
+- 動的なページ
+- HTMLの要素を取得する
+- HTMLの要素を書き換える
+- `getElementsByTagName`・`getElementById`・`getElementsByClassName`など
+
+## DOMとは？
+
+「Document Object Model」の頭文字をとったものです。
+
+要するに、 **Web上の文書(HTML)をオブジェクトとして表現(モデリング≒データとして扱えるように構造化)したもの** のことです。少し分かりにくいですね。順に説明していきます。
+
+- [参考：DOMの紹介](https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model/Introduction)
+
+## **JavaScript**を学ぶ上で「**DOM**について学ぶこと」が重要な理由
+JavaScriptは動的なページを作成するために使われることが非常に多いのですが、その動的なページを作るためにはDOMの知識が必須です。
+
+DOMを使いこなせるようになれば、JavaScriptの威力をすぐに実感できるでしょう！
+
+## 動的なページとは？
+
+- メニューを表示する
+- ダイアログを表示する
+- 入力した値に誤りがある場合にアラートを表示する
+- カレンダーを表示してクリックで日付を選択させる
+- GoogleMap のようにスクロールすることで画面遷移せずに地図を読み込む
+
+こういったことを実現するためには、JavaScriptが不可欠です。(一部CSSのみでも実現できます)
+
+## ありがとうJavaScript
+
+JavaScriptが実際にどう役に立っているか、詳しくはこちらのNoteを見ていただくのがいいと思います！弊社社員の記事ですが、おすすめです。
+- [ありがとうJavaScript](https://note.com/toyomomo/n/n98113f14b799)
+
+## 実際にDOM操作を体験してみよう
+適当なwebページに遷移して、下記のコードをコンソールで実行してみてください。
+
+```
+// 試してみよう
+// 適当なwebページを開いて、コンソールタブで実行する
+document.body.innerHTML = "<img src="https://news.walkerplus.com/article/205022/1259246_615.jpg">"
+```
+
+URLを確認してください、別のページに遷移したわけではありません。
+**HTMLのbody要素全体が、画像に書き換えられているのです。** これがDOM操作です。
+
+## DOM操作 = JavaScriptでHTMLを書き換えること
+
+noteの売り上げを改竄したり、いいね数を改竄するのは朝飯前です。誰でも出来ます。
+(このくらいはJavaScript使わなくても、検証ツール使えれば小学生でも出来ますが・・・)
+
+**悪用している自称インフルエンサーが多数います、騙されないように注意！**
+
+- 改竄前
+![改竄前](~/assets/images/10day_01.png)
+
+- 改竄後（180万円の売り上げ！）
+![180万の売り上げ！](~/assets/images/10day_02.png)
+
+## DOMはツリー構造で表現される
+
+ツリー構造 - 親子のように辿っていける構造。1つの親に対して複数の子を持ち、世代が下がるにしたがって枝分かれして広がっていく構造のことです。
+例：HTMLのbodyタグにdivタグがあって、その配下にh1タグとpタグがある、みたいな構造のことです。
+
+**難しく考えなくて大丈夫です**。(下図を参照のこと)
+
+![HTML ツリー構造](~/assets/images/10day_03.png)
+
+ツリー構造とは、親子のように辿っていける構造のことです。1つの親に対して複数の子を持ち、世代が下がるにしたがって枝分かれして広がっていく構造のことです。
+例：HTMLのbodyタグにdivタグがあって、その配下にh1タグとpタグがある、のような構造のことです。
+
+難しく考えなくて大丈夫です。「親から子へ、子から親へちゃんと辿っていける様に考えられた構造なんだ」くらいに考えておいてください。
+
+## オブジェクトに関しての復習
+#### 重要1：オブジェクトは入れ子に出来ます
+
+```
+// pattern1 と pattern2 , pattern3 は同じ
+// consoleで試してみよう
+　　
+// ----- pattern1 -----
+var obj = {
+    name: "松田",
+    company: {
+    name: "株式会社X-HACK",
+    address: "東京都目黒区目黒2-11-3 印刷工場1F"
+    }
+}
+　　
+// ----- pattern2 -----
+var company = {
+    name: "株式会社X-HACK",
+    address: "東京都目黒区目黒2-11-3 印刷工場1F"
+}
+var obj = {
+    name: "松田",
+    company: company
+}
+　　
+// ----- pattern3 -----
+var name = "松田"
+var company = {
+    name: "株式会社X-HACK",
+    address: "東京都目黒区目黒2-11-3 印刷工場1F"
+}
+var obj = { name, company }
+```
+
+#### 重要2：オブジェクトを配列に格納し、オブジェクトの配列を作ることも出来ます
+
+```
+var pet1 = { name: "たま", age: 3, type: "アメリカンポリダクティル" }
+var pet2 = { name: "アン・ルイス", age: 22, type: "クリリアンボブテイル" }
+　　
+var obj = { name: "松田", pets: [pet1, pet2] }
+```
+
+**ここ大事です！では、実践練習です。**
+必ず手元で実行して動作を確認してくださいね！
+
+## 実践練習
+
+### 下記の構造のHTMLをオブジェクトとして表現(モデリング)してみましょう。
+
+#### sample.html
+
+```
+<html>
+    <head>
+    <title>Page Title</title>
+    </head>
+    <body id="top">
+    <h1>This is a heading</h1>
+    <p class="main my-class">This is a paragraph</p>
+    </body>
+</html>
+```
+
+### HTMLをオブジェクト形式で表現する
+
+#### 回答例
+
+```
+var my_html = {
+    head: { title: "Page Title" },
+    body: {
+    id: "top",
+    h1: { text: "This is a Heading" },
+    p: { text: "This is a paragraph.", classes: ['main', 'my-class'] }
+    }
+}
+　　
+// h1 オブジェクト
+console.log(my_html.body.h1)
+console.log(my_html.body.p.text)
+console.log(my_html.body.p.classes)
+```
+
+## 実際にDOMを使ってちょっと遊んでみましょう
+
+ここから先は[リンク](https://product.starbucks.co.jp/goods/?nid=mm)からスタバのページに遷移して、コンソールで試していきます。
+スタバのページを開いて準備してください。
+
+
+### ステップ-1
+
+スタバのページを開く
+
+→ [https://product.starbucks.co.jp/goods/?nid=mm](https://product.starbucks.co.jp/goods/?nid=mm)
+
+**準備はいいですか？**
+
+### ステップ-2
+
+スタバのページのコンソールでJavaScriptを実行する
+
+```
+// スタバのページで試してみよう！！
+　　
+// スタバのページの商品を全て取得して・・・・・・？
+var images = document.getElementsByTagName('img')
+　　
+for(var n=0; n < images.length; n++){
+    images[n].src = "https://news.walkerplus.com/article/205022/1259246_615.jpg"
+}
+```
+
+どうでしょうか？商品が犬の画像に変わりました！
+before
+![](~/assets/images/10day_04.png)
+after
+![](~/assets/images/10day_05.png)
+
+## 確認してみよう
+
+### 1. コンソールで確認してみよう
+
+```
+var images = document.getElementsByTagName('img')
+```
+
+変数`images`に何が入っているか、コンソールで確認してみよう。
+
+```
+console.log(images)
+```
+
+### 2. MDNで調べてみよう
+MDNで `getElementsByTagName` について調べてみよう
+- [MDN getElementsByTagName](https://developer.mozilla.org/ja/docs/Web/API/Element/getElementsByTagName)
+
+## documentとは何だろう？
+
+### 適当なwebページを開いて、コンソールタブで実行する
+
+```
+// 試してみよう
+// 適当なwebページを開いて、コンソールタブで実行する
+　　
+document
+```
+
+### documentオブジェクトには、HTMLのデータが入っている・・・？
+![document を consoleで実行した様子](~/assets/images/10day_06.png)
+
+### 試してみよう
+
+```
+// 試してみよう
+　　
+document.title // "タンブラー＆グッズ｜スターバックス コーヒー ジャパン"
+document.title = "いぬちゃんグッズ販売所"
+```
+
+![](~/assets/images/10day_07.png)
+
+## まとめ
+DOMを操作すると、JavaScriptでHTMLを動的に書き換えられる。そのページの画像のリストを全部取得することも朝飯前。
+
+## 課題
+1. いろんなサイトからデータをDOM操作で取得できないか試してみましょう。
+2. documentオブジェクトが持つ下記三つのプロパティの役割を、MDNで調べて使ってみましょう。
+
+**getElementById**
+- IDを指定して要素を取得する `Element` と単数形になっていることに注意
+
+**getElementsByTagName**
+- タグの名前を指定して要素を取得する `Elements` と複数形であることに注意
+
+**getElementsByClassName**
+- クラスの名前を指定して要素を取得する `Elements` と複数形であることに注意
+
+次回もDOM操作の続きです
+
+ここの知識があれば、Webページから自動でデータを取得するスクレイピングなどを実施する際にも役に立ちます
+
+## 11日目
+[+JavaScript道場：11日目 / DOM操作 その❷](/tutorials/11th_day)

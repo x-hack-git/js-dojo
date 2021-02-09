@@ -1,0 +1,68 @@
+---
+title: 【15日目】15日目 オセロ①
+slug: "/javascript_basics/tutorials/day15"
+---
+
+## CANVASにオセロの盤面を描いてみる
+
+今までの知識で問題なくオセロの盤面を生成するコードを書くことができるはずです。
+どうでしょうか？下記のコードは問題なく読めますか？
+
+`moveTo`, `lineTo` などは適宜、MDNで調べてみてください。
+分からないことがあったら、 _とりあえずMDNをみる_ ように習慣化してください。
+
+```
+var canvas = document.getElementById("reversi")
+var ctx = canvas.getContext("2d")
+　　
+ctx.fillStyle = "black"
+// 縦の線を引く
+// `線` は 「二点間を結ぶ直線」 でしたね？
+for (let col = 0; col < 8; col++) {
+    ctx.beginPath(); // Start a new path
+    ctx.moveTo(40 * col, 0); // Move the pen to
+    ctx.lineTo(40 * col, 320); // Draw a line to
+    ctx.stroke();
+}
+// 横の線を引く
+for (let row = 0; row < 8; row++) {
+    ctx.beginPath(); // Start a new path
+    ctx.moveTo(0, 40 * row); // Move the pen to
+    ctx.lineTo(320, 40 * row); // Draw a line to
+    ctx.stroke();
+}
+```
+
+
+### 盤面を描画するコード
+
+<iframe width="100%" height="300" src="//jsfiddle.net/yu6b01ts/4/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+### 石を配置してみる
+
+<iframe width="100%" height="300" src="//jsfiddle.net/yu6b01ts/7/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## 課題1 (n, n) 石を配置するコードを書き換えてみよう
+
+オセロの盤面は8x8マスなので `putStone(140, 140, "white")` の書き方でも石を思った通りの場所に配置出来ますが、
+
+- (0, 0)に白
+- (3, 4)に黒
+
+のような指定の仕方の方が一々頭の中で座標を計算しなくて済むため混乱しません。
+コードを書き換えてみましょう。
+
+## 課題2 クリックした位置に石を置いてみよう
+
+ヒント1：onclickイベントをcanvasタグに追加する
+ヒント2：onclickイベントが発生した座標が取れないかMDNを見てみる、Googleで検索してみる
+
+```
+function putStone(event){
+    var rect = event.target.getBoundingClientRect();
+    x = event.clientX - rect.left;
+    y = event.clientY - rect.top;
+    console.log({x, y})
+    putStone(x, y, "white")
+}
+```
