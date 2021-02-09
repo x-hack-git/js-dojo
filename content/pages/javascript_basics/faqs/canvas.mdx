@@ -1,0 +1,65 @@
+---
+title: よくある質問 canvasについて
+slug: "/javascript_basics/faqs/canvas"
+---
+
+これまでに多くの方がつまづいていた箇所をまとめています。
+**質問する前にチェックしてみよう！**
+**質問がなくてもチェックしてみよう！**
+（自分に無い視点からの質問を見ることで勉強になります。）
+
+注：ここにあるものと質問が被ってしまってもOKです！少しでも気になることがあればどんどん質問しましょう！
+
+参考: [11日目：DOM操作 その2](/tutorials/11th_day)
+参考: [12日目：DOM操作 その3](/tutorials/12th_day)
+参考: [13日目：DOM操作 その4](/tutorials/13th_day)
+参考: [14日目：DOM操作 その5](/tutorials/14th_day)
+
+
+## canvasのサイズをcssで指定できない
+
+canvasはcssで見た目の大きさを調整しても、実際のcanvasの領域が変わるわけではありません。
+canvasのサイズは必ず width height の属性で指定しましょう。
+
+canvas の width height はスタイルではなく、属性なのです、、、！
+
+style="width: 400" ではない点に注意です。cssでwidth height を設定すると「そのサイズに引き延ばされてしまう」のです。
+
+1 -> 2 の順序なのでcssでcanvasの大きさを調整すると見た目が思い通りにならないと考えると分かりやすいと思います。
+
+1. canvasで100x100の領域に四角形が描画される
+2. cssが適用されてcanvasが引き延ばされる
+
+width height どちらかだけ指定した場合は、高さも自動的に調整されるので正方形の形は維持されます。(ブラウザによって挙動が違う可能性あり)
+
+
+## HTMLを実行してもcanvasタグが読み込めない
+
+HTMLは上から順番に実行されますので、canvasタグを記載した後にJavaScriptを読み込む必要があります！
+bodyタグの終了の直前にJavaScriptを記載しましょう！
+
+
+## getContext('2d')は何なのか
+
+canvas に対して図形を描画する機能を持ったオブジェクトです！
+四角形などを描画した結果のオブジェクトではありません。
+
+```
+// id=canvasはcanvasタグ
+var canvas = document.getElementById('canvas')
+var ctx = canvas.getContext('2d')
+ctx.fillRect(50, 50, 50, 50) // このオブジェクトのメソッドを使い図形を描画する
+```
+
+何個宣言しても同じものを参照します。
+
+```
+// id=canvasはcanvasタグ
+var canvas = document.getElementById('canvas')
+var ctx1 = canvas.getContext('2d')
+var ctx2 = canvas.getContext('2d')
+var ctx3 = canvas.getContext('2d')
+　
+ctx1 === ctx2 // true
+ctx2 === ctx3 // true
+```

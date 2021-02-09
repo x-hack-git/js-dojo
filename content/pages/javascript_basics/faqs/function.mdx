@@ -1,0 +1,307 @@
+---
+title: よくある質問 関数について
+slug: "/javascript_basics/faqs/function"
+---
+
+これまでに多くの方がつまづいていた箇所をまとめています。
+**質問する前にチェックしてみよう！**
+**質問がなくてもチェックしてみよう！**
+（自分に無い視点からの質問を見ることで勉強になります。）
+
+注：ここにあるものと質問が被ってしまってもOKです！少しでも気になることがあればどんどん質問しましょう！
+
+参考: [6日目：関数](/tutorials/6th_day)
+
+## 関数の参照と実行の違いがよく分からない
+
+宣言された関数を **`()` をつけて呼び出せば実行**、**何もつけずに呼び出せば参照**です。
+
+```
+function sayHello() {
+    console.log("hello")
+}
+　
+sayHello("hello") // 関数の実行 コンソールに "hello" が出力される
+sayHello // 関数そのもの ここでは何も出力されない（関数が実行されていないから）
+```
+
+まず、大前提として、JavaScriptの関数は「オブジェクト」です。より正確にいうと「function(関数)オブジェクト」と呼ばれるものです。
+
+オブジェクトは変数に格納できます
+
+```
+var obj = {}
+```
+
+関数もオブジェクトなので、変数に格納できます
+
+```
+// add という functionオブジェクト を定義する
+function add (num1, num2) {
+    return num1 + num2
+}
+var func = add // func に 関数オブジェクトを格納
+// どちらの名前でも呼び出せる
+func(1, 2) // 3
+add(3, 4) // 7
+```
+
+```
+var func = add // ①参照
+var number = add(1, 3) // ②実行
+```
+
+で違いがあります。1は、実行していません。 関数オブジェクトそのもの を指しています。2は実行しています。
+実際にターミナルで上記を実行してみて、 func は何か？ number は何か？
+試してみましょう。
+
+
+## 関数や式に半角スペース・改行を入れていいのかわからない
+
+この記事にまとめてあります！
+参考: [補講：改行・スペースについて](/extras/space)
+
+
+## console.log()で出力されるものが戻り値なの？
+
+console.log()の出力は戻り値ではありません。
+関数の戻り値は、return の後に記述したものです。
+
+return 文がない関数は undefined が返ります
+
+```
+// 戻り値 undefined
+function hello() {
+    console.log("hello");
+}
+```
+
+こうすると、戻り値は「console.log("hello")の戻り値」になります。
+console.log()は引数をコンソールに出力するだけで、戻り値はありません。
+
+```
+function hello() {
+    return console.log("hello");
+}
+```
+
+つまり、これと同じことになります。
+
+```
+function hello() {
+    var res = console.log("hello"); // 戻り値はundefined
+    return res; // undefined
+}
+```
+
+
+## clearIntarval()の引数にsetInterval()が必要なのはなぜか
+
+setInterval関数の戻り値が何か確認してみてください。
+関数を変数に格納している訳ではなく、変数には関数の「戻り値」が格納されているのです。
+今一度、関数について復習してみてください
+
+```
+var intervalId = setInterval(draw,200); // setInterval関数の戻り値は、`数字`です。 それがsetInterval()を識別するidです。
+console.log(intervalId) // idが表示される
+clearInterval(intervalId) // idを指定して実行を止める
+```
+
+下記を試して見ると理解しやすいかも知れません
+
+```
+var intervalId1 = setInterval(draw,200);
+var intervalId2 = setInterval(draw,200);
+console.log(intervalId1) // 一つ目の intervalの idが表示される
+console.log(intervalId2) // 二つ目の intervalの idが表示される
+```
+
+MDNのsetIntervalについても参照してください
+参考： [MDN setInterval](https://developer.mozilla.org/ja/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
+
+
+## callback関数ってどんな関数？
+
+こちらの記事をご覧ください！
+
+参考： [補講: callback関数について](/extras/callback)
+
+
+## returnする場合、しない場合の使い分け
+
+今は`プログラミングの機能を説明するための意味のないコード`を書いているため、全てにおいて「なぜ必要なのか？」の理解は難しいと思います。
+**return があると 関数の中で計算した結果を取り出せる という機能があるだけ**です。
+
+```
+function add(a, b) {
+    return a + b
+}
+var c = add(1, 2) // 関数の中で使用した値を関数の外で使いたいので returnした
+```
+
+return が必要ない関数も多くあります。
+
+```
+function showNumber(a) {
+    console.log(a) // コンソールにaの値が表示される。
+    // returnはない
+}
+// 関数の中で使用した値を関数の外で使わないのでreturnしていない
+```
+
+関数で計算だけして、その**計算結果を関数の外で使わなければreturnは必要ありません**。
+関数内部で処理した結果を外側で使うか？使わなければ不要、使うならreturnで返す。
+これだけです。
+
+オブジェクト、関数、if、forあたりの解説が終わった後に実践的なアプリを作って行くので、
+その過程で疑問が解けると思います！！
+
+
+## JapaScriptのプログラムは上から順に実行されるのか？
+
+こちらの記事をご覧ください！
+参考： [補講：JavaScriptの実行順序とHoistingについて](/extras/hoisting)
+
+
+## thisとアロー関数の関係について
+
+こちらの記事にまとめたのでご覧ください！
+とりあえず、「this使うときは注意が必要」と覚えておいて、どっち使うかはその都「試す、調べる、思い出す」でいいです！
+
+参考： [thisとアロー関数の関係について](/extras/this)
+
+
+## 関数とメソッドの違い
+
+プロパティの中で、関数のものをメソッドと呼びます。
+
+```
+var human = {
+    age: 34 // プロパティ
+    sayHello: function() {
+    console.log('hello')
+    } // これもプロパティ でも関数なので、メソッドと呼ぶ
+}
+```
+
+
+## 関数とオブジェクトの違い
+
+関数は () で実行可能なオブジェクトです！ （関数もオブジェクトの一種）
+
+```
+var obj1 = { a: 100 }
+var obj2 = function() { return 100 }
+obj1.b = 10
+obj2.b = 20
+```
+
+同じように変数に格納できますし、同じように扱えますが
+
+```
+obj1() // エラー発生
+obj2() // 100
+```
+
+とすると違いが分かります。
+
+関数宣言時の () と 関数オブジェクトを実行する () は別物です！
+
+```
+var obj2 = function() { return 100} // 関数宣言時の ()
+obj2() // 関数オブジェクトを実行する ()
+```
+
+
+## 無名関数の使いかた
+
+1.変数に格納する
+
+```
+var hello = (name) => {
+console.log("Hello, " + name + " さん")
+}
+hello("名前")
+```
+
+2.即時関数にする
+
+```
+((a,b)=>{ return a + b })(5,10)
+```
+
+3.コールバック関数として使う
+
+```
+setInterval(() => {
+    console.log("hello")
+},300)
+```
+
+
+## 関数内で宣言した変数の呼び出し方法
+
+関数内で宣言された変数は、関数が呼び出された時に変数に格納され、関数の実行が終わったタイミングで破棄されます
+方法としては、
+- 関数内でグローバル変数に格納する(非推奨)
+- return で返す
+- オブジェクトのインスタンスを作る
+の3パターンです
+
+1. グローバル変数にいれる
+
+```
+var body;
+var func1 = () => {
+    body = document.getElementsByTagName("body")
+}
+```
+
+2. return のパターン
+
+```
+var func1 = () => {
+    return document.getElementsByTagName("body")
+}
+func1() // <body>...</body>
+```
+
+3. new するパターン
+
+```
+var Func1 = function(){
+    this.body = document.getElementsByTagName("body")
+}
+let funcObj = new Func1()
+funcObj.body
+```
+
+
+## 宣言キーワードは「var」「let」「const」のどれを使えばいいのか
+
+最近のJavaScriptでは、基本的にvarを使うことは避けたほうが良いとされています。意図しないバグを産まないためです。
+大規模なアプリ開発や、実務では基本再代入負荷の const を使い、どうしても const では実装に問題がある場合 let を使って それ以外の場合に var を使うのがベターとされています。
+
+ただ、実際はscopeを意識して変数を使っていれば問題は起きにくいです。現に、ES2015(ES6)から const / let が追加されたので、それ以前はvarしかなかったのです。let const 比較的最近追加された新しいJSの仕様です。
+
+現行のほぼ全てのブラウザで const let を使って実装が可能なので、理由がなければ var の仕様は避けるべきです
+
+JS道場のテキストで var を使っている理由は、ブラウザのコンソールでコードをコピペして実行してもらう関係上、const だと再度実行すようとするとエラーになるからです。
+
+
+## コールバック関数の仮引数に「_」を使っているのはなぜか
+
+コールバック関数の仮引数はアンダースコアを使って一文字変数とすることがあります
+一文字変数は慣習的にライブラリのコードの中で使われることがあります。これは通信量を減らすためです。変数が短ければファイルサイズが小さくなり読み込みが早くなるからです。
+可読性を重視する場合は分かり易い名前の方が良いかもしれません。
+ライブラリのコードなどでは使われていることも多いので覚えておくと良いでしょう。
+
+
+## onclickとaddEventListenerの使い分け
+
+addEventListener の方がたくさんのことができますが、 onclick（ イベントプロパティ）で十分であれば、そちらを使う方が良いと思います。
+addEventListener だと、うっかり二重でイベントが登録されたりすることもありますが、イベントプロパティだと上書きされるので、間違って二重で登録される心配もないので。理由がなければイベントプロパティで良いでしょう。
+
+あくまで私の個人的な意見なので、開発現場や組織によって異なる意見を持った方もいると思いますので、その点だけご留意ください！！
+
+参考：[EventTarget.addEventListener()](https://developer.mozilla.org/ja/docs/Web/API/EventTarget/addEventListener)
