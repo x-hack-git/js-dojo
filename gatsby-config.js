@@ -58,7 +58,7 @@ module.exports = {
           //   slug: `/policy`,
           // },
           {
-            title: `JavaScript基礎講座`,
+            title: `JavaScript基礎`,
             slug: `/javascript_basics`,
           },
           {
