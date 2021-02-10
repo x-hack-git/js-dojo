@@ -18,6 +18,7 @@
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-minimal-blog": "^2.7.3",
+    "@wardpeet/gatsby-plugin-static-site": "^0.2.3",
     "gatsby": "^2.32.0",
     "gatsby-image": "^2.11.0",
     "gatsby-plugin-google-analytics": "^2.4.1",
