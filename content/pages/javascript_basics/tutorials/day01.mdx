@@ -1,9 +1,7 @@
 ---
-title: JavaScript基礎講座 1日目
-slug: "/javascript_basics/day01"
+title: 【1日目】Chromeデベロッパー・ツール
+slug: "/javascript_basics/tutorials/day01"
 ---
-
-# 【1日目】Chromeデベロッパー・ツール
 
 ## 事前準備
 - [Chromeブラウザのインストール](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)を済ませておいてください
@@ -39,14 +37,14 @@ JavaScriptの挙動を確かめたいだけであれば、コンソールで動�
 - Macの場合、`command(⌘) + option(⌥) + i` 3つのキーを`同時`に押します
 - windowsの場合、 `F12`
 
-![](~/assets/images/01day_01.png)
+![](/images/01day_01.png)
 
 ### 3. タブが複数あるので`Console` タブを選択します
-![](~/assets/images/01day_02.png)
+![](/images/01day_02.png)
 ### 4. コンソールタブでJavaScriptを実行してみよう！
 変数宣言・関数・オブジェクトについては次回以降に詳しく解説します。まずは、コードを書いて動かしてみましょう。
 
-```
+```js
 // 単純な計算
 // + (加算)
 // - (減算)
@@ -65,24 +63,24 @@ JavaScriptの挙動を確かめたいだけであれば、コンソールで動�
 // 結果：1
 ```
 
-```
+```js
 // 変数に数値を保存して計算
 var num1 = 10
 var num2 = 15
 num1 * num2 // 150
 ```
 
-```
+```js
 // ログ出力 文字の場合は｀引用符｀と呼ばれる記号で囲むこと
 console.log("好きな文字")
 ```
 
-```
+```js
 // 警告表示
 alert("好きな文字")
 ```
 
-```
+```js
 // 関数の登録
 function hello(){
     console.log("HEllO WORLD!!")
@@ -91,7 +89,7 @@ function hello(){
 hello() // "HEllO WORLD!!"
 ```
 
-```
+```js
 // JavaScriptオブジェクト
 var obj = {
     name: "松田信介",
@@ -110,7 +108,7 @@ obj.favorite_foods[0] // バナナ
 ### 6. 🚫マークをクリックすると、コンソールの中身をクリアできます。
 consoleを綺麗にしたい場合に使えます。
 変数や関数などは登録されたままです。
-![](~/assets/images/01day_03.png)
+![](/images/01day_03.png)
 
 **Consoleタブはめちゃくちゃ頻繁に使うので、必ず使い方を覚えてください。**
 
@@ -125,7 +123,7 @@ JavaScriptプログラミングをしている時、以下のような状況でC
 こういったconsoleの使い方を「consoleデバッグ」と呼んだりします。
 重要なテクニックなので、覚えておきましょう。
 
-```
+```js
 var a = 100
 a = a * 1.5
 console.log("変数a:" + a) // 変数a:150
@@ -138,23 +136,23 @@ console.log({a}) // {a: "hello"}
 ## コンソールの見方
 &gt;(左に開いた矢印)の行は、実行されるコード
 
-```
+```js
 > a=10
 ```
 
 &lt;(右に開いた矢印)の行は、returnされた結果(式が評価された結果)
 
-```
+```js
 < 10
 ```
 
 何もない行は、単にconsoleに出力された情報 (console.log で出力された文字など)
-![](~/assets/images/01day_04.png)
+![](/images/01day_04.png)
 
 console.log の **戻り値**は **undefined**
 var n = 10 の **戻り値**は **undefined**
 
-![](~/assets/images/01day_05.png)
+![](/images/01day_05.png)
 
 
 二日目は、変数とは何か？なぜプログラミングには変数が必要か？変数の名前の付け方の解説をします

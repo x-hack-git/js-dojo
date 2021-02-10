@@ -1,15 +1,13 @@
 ---
-title: JavaScript基礎講座 5日目
-slug: "/javascript_basics/day05"
+title: 【5日目】オブジェクトの解説続き
+slug: "/javascript_basics/tutorials/day05"
 ---
-
-# 【5日目】オブジェクトの解説続き
 
 今回、かなり難しいです。特に**スコープ、グローバルオブジェクト、this**。
 このあたりは、繰り返し説明する予定ですので、今は完全に理解できなくてもOKです！
 
 前日の資料はこちら
-[+JavaScript道場：四日目 / オブジェクトについて](/tutorials/4th_day)
+[+JavaScript道場：四日目 / オブジェクトについて](day04)
 
 ## 用語集
 - consoleオブジェクト
@@ -23,7 +21,7 @@ slug: "/javascript_basics/day05"
 
 **「オブジェクト」** と **「プロパティ」** という名前に慣れてください。
 
-```
+```js
 var matsudaShinsuke = { name: "松田信介" } // ここがプロパティ keyは`name` valueは`松田信介`
 obj.name // これもプロパティ(nameは `objオブジェクト`のプロパティ)
 ```
@@ -34,7 +32,7 @@ obj.name // これもプロパティ(nameは `objオブジェクト`のプロパ
 
 何度も登場していますコチラのコード
 
-```
+```js
 console.log("HELLO")
 ```
 
@@ -44,7 +42,7 @@ console.log("HELLO")
 `.log` とは なんでしょうか？
 `("hello")`  とはなんでしょうか？
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　
 typeof console
@@ -56,19 +54,19 @@ typeof console.log
 // ("hello") についてはまだ説明していませんが、関数に引数を与えて実行しています。次回やります。
 ```
 
-![consoleはオブジェクトが格納された変数](~/assets/images/05day_01.png)
+![consoleはオブジェクトが格納された変数](/images/05day_01.png)
 
 ## `console`は`オブジェクト`、そして`log`はconsoleオブジェクトが持つプロパティなのだった！
 
 `console`についての詳しい説明はこちら。ちょっと読んでみて下さい！
-- [consoleオブジェクト](~/assets/images/05day_02.png)
+- [consoleオブジェクト](/images/05day_02.png)
 
 ## グローバルオブジェクト
 聞き慣れない言葉が出てきました。グローバルオブジェクトです。
 
 百聞は一見に如かず、まずはいつものようにconsoleタブで試してみます。
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　
 var a = 100
@@ -83,7 +81,7 @@ console.log(this.a) // 200
 
 ## では、ここの`this`とはなんでしょう？
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　
 this
@@ -91,7 +89,7 @@ this
 
 注: Chromeブラウザの場合です。JavaScriptは実行されるブラウザによって挙動が違う場合があります。
 
-![](~/assets/images/05day_03.png)
+![](/images/05day_03.png)
 
 `this`はオブジェクトでした！そして、これが **グローバルオブジェクト** です。
 
@@ -103,14 +101,14 @@ this
 ## consoleもグローバルオブジェクトのプロパティ
 
 そのため、`this`を使って参照ができます(グローバルスコープでは・・・)
-![](~/assets/images/05day_04.png)
+![](/images/05day_04.png)
 
 これでもいける！
-![](~/assets/images/05day_05.png)
+![](/images/05day_05.png)
 
 これもいける！
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　
 this.window.console.log("hello")
@@ -118,7 +116,7 @@ this.window.console.log("hello")
 
 どうやら同じ動きをするようですね。(同じオブジェクトを指している・・・？)
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 // 全部同じ意味です！
 　　　　　　
@@ -130,7 +128,7 @@ this.window.console.log("hello")
 
 では下記のように書くとどうなるでしょうか？
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　　　
 // オブジェクトの中に二つ関数があり、関数内でthisを使う
@@ -149,12 +147,12 @@ var obj = {
 `test_a()` は問題なしで、`test_b()` はエラーになります。`this`が何を指すか変わるからです。
 エラーメッセージに`Cannot read property`と出力されていますね。
 
-![](~/assets/images/05day_06.png)
+![](/images/05day_06.png)
 
 
 これならOK
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　
 var obj = {
@@ -221,7 +219,7 @@ var obj = {
 
 またはJavaScriptで
 
-```
+```js
 // Chrome: Consoleタブで実行してみよう
 　　
 // parseInt は 十進数に変換ができる関数
@@ -263,4 +261,4 @@ console.log(parseInt(10011001, 2)); // 153
 
 
 ## 明日はこちら
-[+JavaScript道場：六日目 / 関数について❶](/tutorials/6th_day)
+[+JavaScript道場：六日目 / 関数について❶](day06)

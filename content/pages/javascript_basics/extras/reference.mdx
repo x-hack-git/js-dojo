@@ -1,0 +1,89 @@
+---
+title: 値渡しと参照渡し
+slug: "/javascript_basics/extras/reference"
+---
+
+値渡しと参照渡しについて理解しましょう
+
+## 用語集
+
+- リテラル
+- プリミティブ型
+- オブジェクト
+
+## データ型を大きく分けると、プリミティブ型とオブジェクトの2つに分類できます
+
+- プリミティブ型（基本型）
+    - 真偽値（Boolean）： true / false
+    - 数値（Number）：29 や  3.141592 や 0.3 などの数値
+    - 文字列（String）：`JavaScript` `こんにちは` などの文字
+    - undefined: 値が未定義であることを意味するデータ型
+    - null: 値が存在しないことを意味するデータ型
+    など
+
+- オブジェクト（複合型）
+- オブジェクト
+- 配列
+- 関数
+など
+
+## {} や [] などを使って表現するものはオブジェクトです
+
+だいたいそうかんがえてOK
+
+```js
+// 勿論オブジェクト
+var obj = { name: "JavaScript" }
+// 関数(関数もオブジェクトです)
+functuon hello () {
+    // ...
+}
+// 配列もオブジェクト
+var array = [1, 2, 3]
+// クラスもオブジェクト
+class User {}
+```
+
+## そうじゃないものはプリミティブ型
+
+だいたいそうかんがえてOK
+
+```js
+var name = "松田"
+var age = 32
+var ratio = 1.2
+var condition = false
+var notDefine = undefined
+var isNull = null
+```
+
+## オブジェクトは参照が渡される、値は値が渡される
+
+関数の引数として受け取ったデータが関数の外側でも影響を受けるか変わる。
+オブジェクトは、関数の中で書き換えられた場合、実際のオブジェクトが書き換わる。プリミティブ型は参照ではなく値そのものを渡しているので、書き換わらない。
+
+```js
+function writeData (name, obj) {
+    name = "ほげ"
+    obj.name = "ほげ"
+}
+　
+var name = "松田"
+var obj = { name: "松田" }
+　
+writeData(name, obj) // 書き換え関数実行
+　
+console.log(name) // 松田
+console.log(obj.name) // ほげ
+```
+
+```js
+var obj1 = {}
+var obj2 = obj1
+　
+obj1.name = "JavaScript"
+　
+console.log(obj1.name) // "JavaScript"
+console.log(obj2.name) // "JavaScript"
+```
+

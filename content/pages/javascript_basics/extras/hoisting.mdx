@@ -1,0 +1,131 @@
+---
+title: JavaScriptの実行順序とHoistingについて
+slug: "/javascript_basics/extras/hoisting"
+---
+
+基本的にJavaScriptは上から順番に読み込まれます。が、function を使った関数の宣言、varを使った変数の宣言は、そのスコープの先頭で実行されたのと同じになります。
+
+## よくある疑問
+
+sampleという関数宣言の前に、sampleという関数を実行しているが、なぜエラーにならないのか？
+JavaScriptは上から順番に実行されるのではないのか？
+
+**問題とされているコード…**
+
+```js
+sample()
+　
+function sample(){
+    console.log("hello")
+}
+```
+
+その疑問、素晴らしい着眼点です。解説します！
+
+## 要約
+
+**下記のように書いたのと同じになります。**
+
+```js
+function sample(){
+    console.log("hello")
+}
+　
+sample()
+```
+
+## 関数の宣言と実行の違い
+
+疑問：下記のようなコードを書いたがログに`hello`と出力されない。
+
+```js
+function sample(){
+    console.log("hello")
+}
+```
+
+関数は宣言した段階では、プログラムに対する指示書でしかありません。実行の命令をしなければ、指示書は単なるメモです。呼び出したい箇所で呼び出してあげてください。
+
+```js
+// 関数の定義
+function sample(){
+    console.log("hello")
+}
+　
+sample() // 関数が実行される
+```
+
+## JavaScriptを読み込む位置について
+
+### エラーになる書き方
+
+1. DOMを取得するJavaScriptを、HTMLより前に書いてしまう
+2. ライブラリの読み込みの前に、ライブラリを使用するコードを書いてしまう
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    // h1タグが読み込まれる前に実行されてしまい、見つけられない
+    const title = document.getElementById("title")
+    title.innerText = "JavaScript道場"
+    </script>
+</head>
+<body>
+    <h1 id="title">js-hack</h1>
+</body>
+</html>
+```
+
+
+### エラーにならない書き方①
+
+JavaScriptは、なにはともあれbodyタグの閉じタグの直前に書いて置けば安心。
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="title">js-hack</h1>
+    <script>
+    const title = document.getElementById("title")
+    title.innerText = "JavaScript道場"
+    </script>
+</body>
+</html>
+```
+
+### エラーにならない書き方②
+
+windowの読み込み完了イベントが発火したタイミングでJavaScriptが動くようにする
+
+```js
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+    // 読み込み完了イベントが発火した時に動くようにする
+    window.onload = (event) => {
+        console.log(event)
+        const title = document.getElementById("title")
+        title.innerText = "JavaScript道場"
+    }
+    </script>
+</head>
+<body>
+    <h1 id="title">js-hack</h1>
+</body>
+</html>
+```

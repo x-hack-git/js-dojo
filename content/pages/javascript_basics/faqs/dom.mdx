@@ -1,0 +1,70 @@
+---
+title: よくある質問 DOMについて
+slug: "/javascript_basics/faqs/dom"
+---
+
+これまでに多くの方がつまづいていた箇所をまとめています。
+**質問する前にチェックしてみよう！**
+**質問がなくてもチェックしてみよう！**
+（自分に無い視点からの質問を見ることで勉強になります。）
+
+注：ここにあるものと質問が被ってしまってもOKです！少しでも気になることがあればどんどん質問しましょう！
+
+参考: [10日目：DOM操作 その1](/javascript_basics/tutorials/day10)
+参考: [11日目：DOM操作 その2](/javascript_basics/tutorials/day11)
+参考: [12日目：DOM操作 その3](/javascript_basics/tutorials/day12)
+参考: [13日目：DOM操作 その4](/javascript_basics/tutorials/day13)
+参考: [14日目：DOM操作 その5](/javascript_basics/tutorials/day14)
+
+
+## getElementById()はどこに属するオブジェクトか
+
+getElementById() は documentオブジェクトでしか使えません。
+IDは`文章全体で一意なHTMLを取得する`ので、idでDOMを取得してから、そのDOMから何をを取得する場合はtag名や、class名を使って取得するようにしてください。
+idであれば、直接指定できるはずなので、idで指定したHTMLの中からidで取得するようなユースケースがありえないので、このような仕様になっているのだと思います。
+
+<prism class="prism-code" language="js">
+var dom = document.getElementById("testId") // 動作する
+　
+dom.getElementById("testId") // 動作しない
+</prism>
+
+
+## getElementsByTagName(), getElementsByClassName() はなぜ複数形か
+
+getElementsByTagName(), getElementsByClassName()はそれぞれタグ名とクラス名が一致するDOMを取得する関数です。
+タグ名やクラス名はHTMLの中に同じものを複数持つことができます。
+なのでメソッド名も複数形になっています。
+
+逆にIDはHTMLの中に同じものを持てないので、getElementById()と単数系で表されています。
+
+
+## HTMLのツリーはオブジェクトとして取得できるのか
+
+HTML要素は全てJavaScriptのオブジェクトのプロパティとして扱えます。めちゃくちゃ便利です！
+要素に付与された class名やid名で要素を取得し、オブジェクトとしてその要素を操作できます。
+
+ルールとしては二つだけです。
+
+- idで指定すると、単一のデータが取れる
+- id以外で指定した場合は必ず配列でデータが返ってくる
+    - 配列の中に各要素のオブジェクトがあるイメージ
+
+
+## NodeListとHTMLCollectionの違い
+
+HTMLCollection = NodeList と考えてOKです。
+HTMLCollectionはHTML要素の配列のようなリスト（集合）です。
+厳密には配列ではないが、配列のように要素を集めたリストのようなもの
+JavaScriptをはじめ、色々な言語でDOMを扱う際に、配列に変換して使用しやすいものです。
+
+参考: [HTMLCollection](https://developer.mozilla.org/ja/docs/Web/API/HTMLCollection)
+
+
+## querySelectorでなくgetElementByIdやgetElementsByTagName使うメリット
+
+querySelectorやquerySelectorAllの方が使いやすいと思います。特にjQueryなどで慣れている人にとっては。
+querySelectorの方が処理速度が遅いですが、
+正直、Webサービスでそこまでパフォーマンスを気にする場面がなければどちらを使っても良いと思います。
+ゲームなどで、弾幕など大量(数千・数万)のオブジェクトを生成するなどでなければ、パフォーマンスの影響は小さいと思います。
+通常のサイトであれば、好きな方を使って良いと思います。

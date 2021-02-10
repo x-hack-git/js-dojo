@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 export default props => {
   const { allMdxPage } = useStaticQuery(graphql`
     query {
-      allMdxPage {
+      allMdxPage(filter: {slug: {regex: "/extras\/[^\/]+$/"}}, sort: {order: ASC, fields: slug}) {
         edges {
           node {
             slug
@@ -14,7 +14,7 @@ export default props => {
       }
     }
   `)
-console.log(allMdxPage);
+
   return (
     allMdxPage.edges.map(_ => {
       return (

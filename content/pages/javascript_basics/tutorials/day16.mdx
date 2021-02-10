@@ -1,0 +1,58 @@
+---
+title: 【16日目】オセロ②
+slug: "/javascript_basics/tutorials/day16"
+---
+
+## 課題の回答例：クリックした位置に石を配置する
+
+ポイントは下記の部分です。
+
+クリックで取得できる座標は、HTML上の `x, y` 座標であって、CANVAS上の `x, y` ではないということがポイントです。(ブラウザのHTMLの中にCANVASが存在しており、その相対的な位置を取得する必要があるということです)
+
+さあ、サンプルコードをいじって実際に確かめてみましょう。
+
+```js
+var rect = event.target.getBoundingClientRect();
+x = event.clientX - rect.left;
+y = event.clientY - rect.top;
+```
+
+<iframe width="100%" height="300" src="//jsfiddle.net/yu6b01ts/10/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## クリックした座標じゃなくて、マスに合わせて配置したい
+
+現状のコードだと、マスの境目など中途半端な位置にも自由に石を配置出来てしまうので、下記のように修正します。
+
+```js
+// 20 + 40n に配置されるようにすれば良い
+// % は 割り算の余りを取得する演算子
+// 例1. 158%40 なら 38 (158-38+20=140に配置すればマスに綺麗に収まる)
+// 例2. 171%40 なら 11 (171-10+20=180に配置すればマスに綺麗に収まる)
+x = x - x % 40 + 20 // キリが良い箇所に配置されるようにx座標を補正
+y = y - y % 40 + 20 // キリが良い箇所に配置されるようにy座標を補正
+```
+
+<iframe width="100%" height="300" src="//jsfiddle.net/yu6b01ts/11/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## 石を配置した座標を記憶
+
+配列に入れるデータを 1:white 2:black として石の位置を記憶しておく
+(0, 0) が左上、(7,7) が右下のマスをそれぞれ表す。
+
+<iframe width="100%" height="300" src="//jsfiddle.net/yu6b01ts/13/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+## 課題： 石を置けるかの判定ロジックを追加しよう
+
+置けない場所に石を配置した際は警告を出します。
+複雑な処理を実装する場合は _簡単な実装からやってみると\`吉\`です_
+
+### ステップ1. すでに石が置いてある箇所には置けない
+- 置く場所が分かれば、その位置のデータが`0`かどうかで判別できる _簡単_
+
+### ステップ2. 隣接するマスに石がない箇所には置けない
+- 配列をうまく操作しよう _少し難しい_
+
+### ステップ3. 石をひっくり返せない位置には置けない
+- _かなり難しい_
+
+### ステップ3がノーヒントで実装出来たら中級者です！頑張りましょう

@@ -1,0 +1,147 @@
+---
+title: 【7日目】関数について パート②
+slug: "/javascript_basics/tutorials/day07"
+---
+
+今日は関数の続きです。前回は _関数はオブジェクトである_ と言う話をしました。
+
+[+JavaScript道場：六日目 / 関数について❶ ](day06)
+
+## 用語集
+- 関数は**第一級オブジェクト**
+- 無名関数
+- setInterval
+- setTimeout
+- callback
+
+## 関数は第一級オブジェクトなので、変数に格納できる
+第一級オブジェクトという言い方に引っかかるかもしれませんが、要するに **「普通のオブジェクトと同じ」** という意味です！
+
+```js
+// こんな風に`宣言`と`格納`を一行で書くこともできます、「関数式」と言います
+var fuga = function (){
+    return 1 + 1
+}
+　
+var a = fuga() // 実行
+console.log(a)
+```
+
+## 関数オブジェクトは他の関数の引数として渡せる
+
+```js
+var fuga = function hoge(){
+    return 1 + 1
+}
+　　
+console.log(fuga) // console.log は `関数` でしたね？ 覚えてますか
+```
+
+さあ、この**関数がオブジェクトであるという性質**は「どういう時に役に立つ」でしょうか？
+
+## **setInterval** を使ってみよう
+
+`setInterval()` は、一定の遅延間隔を置いて関数を繰り返し実行する関数です。関数オブジェクトを引数にとる代表的な関数と言えます。
+
+**最初の引数**に関数オブジェクトを指定し、**二つ目の引数**に間隔をms単位で指定します(1.0秒=1000㍉秒)。戻り値は`interval ID` と呼ばれるものです。
+`setInterval()` で繰り返し実行している処理を止めたい場合は  `clearInterval()` という関数を使って停止することができます。
+
+## 構文
+
+MDNには下記のように書いてありますが、こちらの読み方はまた後日・・・
+
+```js
+var intervalID = scope.setInterval(func, delay[, param1, param2, ...]);
+var intervalID = scope.setInterval(code, delay);
+```
+
+### 試してみよう
+
+```js
+// Consoleで試してみよう
+var n = 0
+function func (){
+    n += 1 // この関数が呼び出されるたびに 変数:n が1ずつ増えていく
+    console.log("hello: " + n)
+}
+　
+var intervalId = setInterval(func, 200) // 200ms毎に `hello` と出力される
+```
+
+止めたい時は・・・
+
+```js
+clearInterval(intervalId) // intervalIdを指定して繰り返しを止める
+```
+
+## もう一つの書き方
+
+次回以降に詳しく解説します。アロー関数といいます。
+「( ) の中に引数を、 { } の中に処理を書く」というのは通常の関数と同じです。
+
+`() => {} // 何もしないアロー関数`
+
+```js
+var n = 0
+var intervalId = setInterval(() => {
+    n += 1
+    console.log("hello: " + n)
+}, 200)
+　
+// 下記で`関数そのもの`を setInterval の引数にしています
+// () => {
+//   n += 1
+//   console.log("hello: " + n)
+// }
+```
+
+## callback / callback関数
+
+関数に関数を渡せるので、ある関数の中で実行したい関数(**callback関数**)を定義することができる。関数の実行を遅延させたい場合等に便利です。
+
+「パンが焼けたら、食べる」みたいな感じです。パンが焼ける前にパンを食べることはできないので、パンが焼きあがったら食べてくださいという命令です。パンが焼き上がるまでの時間が不明な場合に使えます。
+
+コンピュータプログラムは命令に忠実に実行されるので、「電話をかけて、要件を話す」という命令の時に「**相手が電話に出る前に要件を話し始めてしまう**」といった状況が発生してしまうことがあります。電話をかけて相手が受話器をとるまでに通常では数秒から数十秒程度のタイムラグがありますが、callbackの仕組みを使うことで、**相手が電話口に出た時にはすでに要件を話おえていて、相手に何も伝わらなかった**というような事態の発生を防げます。
+
+実際のプログラムでは通信などネットワークの状況によって処理にかかる時間にばらつきがあるような処理で使われます。 **「ネットワークに接続して必要なデータを取得したら、そのデータを使った何かをする」** といった時によく使います。
+
+## 練習：関数を指定した回数だけ実行できる関数を定義する
+
+```js
+// loopFunctionは、関数(func)と関数の実行回数を引数に取る
+// この関数は、引数で指定した関数を指定回数だけ実行する
+function loopFunction (func, count) {
+    for(let i=0; i < count; i++){
+    func() // `func`は関数オブジェクト ()をつけて関数を`実行`する
+    }
+}
+　
+// 書き方1 アロー関数を引数に指定
+loopFunction(() => {
+    console.log("hello")
+}, 3)
+　
+// 書き方2 関数式を引数に指定
+loopFunction(function() {
+    console.log("Good mooning")
+}, 3)
+　
+// 書き方3 関数オブジェクトを引数に指定
+function goodbye(){
+    console.log("goodbye!!")
+}
+loopFunction(goodbye, 7) // goodbye() としないこと！！
+```
+
+## 課題
+setTimeout という関数もあるので、使い方を調べて使ってみよう！使い方分からなければ質問して下さい。
+- [MDN setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+
+<iframe width="100%" height="419" src="https://www.youtube.com/embed/oA7AEYBbya8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## 補足
+
+[+JavaScriptの実行順序とHoistingについて](/extras/hoisting)
+
+次回は、制御構文です
+[+JavaScript道場：八日目 / 制御構文 if](day08)

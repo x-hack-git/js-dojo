@@ -1,0 +1,110 @@
+---
+title: callback関数について
+slug: "/javascript_basics/extras/callback"
+---
+
+大層な名前がついているので、難しい！と身構えてしまうかも知れませんが、
+
+要するに、 **関数の引数に関数を指定できる(そういう性質がある)** というだけの話です.
+
+関数とは「手順書」です.
+
+**指示を書いたメモ**です.
+
+指示を書いたメモを渡して、メモの通りに実行してもらうという動作が**callback関数**と呼ばれているだけで、名前に大した意味はありませんし、**そういう特別な関数がある訳でもありません**.
+
+関数の**とある性質に名前をつけただけ**です.
+
+### callback関数という名前にとらわれずに、下記の内容をまずしっかり理解して下さい.
+
+```js
+// chromeのデバッグツール(console)で実行すること！！！！
+　
+// helloという関数を定義する
+function hello(){
+    let name = "松田信介"
+    console.log("こんにちは、" +name + "さん")
+}
+　
+hello // hello メモを参照する、メモそのもの
+hello() // hello メモの内容を実行する
+```
+
+**「メモそのもの」** と、 **「メモの内容を忠実に実行すること」** の違いをはっきり認識してください
+
+
+```js
+// 別名を付けることも可能
+function ohayo(){
+    let name = "松田信介"
+    console.log("こんにちは、" +name + "さん")
+}
+　
+var haisai = ohayo
+　
+haisai
+haisai()
+```
+
+
+## 関数の性質を利用する
+
+関数を配列に詰めて、配列から一つ取り出して実行する.
+これは、ただ**関数の性質を利用しただけ**です.
+
+1. 関数とは「手順を書いたメモ」
+2. メモの内容を**実行**したい場合 `()` を付ける.
+
+```js
+function hello1(){
+    console.log("Xin chào") // ベトナム語
+}
+function hello2(){
+    console.log("你好") // 中国語
+}
+function hello3(){
+    console.log("hello") // 英語
+}
+function hello4(){
+    console.log("سلام علیکم") // アラビア語
+}
+　
+var arr = [hello1, hello2, hello3, hello4] // 配列に関数をセットする
+　
+arr[0]() // 日本語の挨拶
+arr[1]() // 中国語の挨拶
+arr[2]() // 英語の挨拶
+arr[3]() // アラビア語の挨拶
+```
+
+この性質を利用して、関数オブジェクトを引数にとる関数も定義できます
+
+```js
+function hello1(){
+    console.log("Xin chào") // ベトナム語
+}
+function hello2(){
+    console.log("你好") // 中国語
+}
+function hello3(){
+    console.log("hello") // 英語
+}
+function hello4(){
+    console.log("سلام علیکم") // アラビア語
+}
+　
+function worldWideHelloMessage(func){
+    console.log("色んな言語での挨拶を学びましょう")
+    func() // 関数を`実行`
+    console.log("日本語で「こんにちは」です")
+}
+　
+worldWideHelloMessage(hello1) // 関数を実行するのではなくメモを渡している
+worldWideHelloMessage(hello2) // 関数を実行するのではなくメモを渡している
+worldWideHelloMessage(hello3) // 関数を実行するのではなくメモを渡している
+worldWideHelloMessage(hello4) // 関数を実行するのではなくメモを渡している
+```
+
+**関数オブジェクトを引数として、他の関数に渡せる** これを **callback関数** と名前をつけているだけです.
+
+callback関数は、**関数の特別な種類の一つではありません**.

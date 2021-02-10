@@ -1,0 +1,62 @@
+---
+title: 改行、スペースについて
+slug: "/javascript_basics/extras/space"
+---
+
+## 下記のパターンは全て問題ありません。動作への影響もありません。
+
+```js
+var hoge=0
+var hage= 0
+var fuga =0
+var hugo = 0
+　
+function func1(){}
+function func2() {}
+function func3 () {}
+function func4 ( ) {}
+function func5 (arg1,arg2) {}
+function func6 (arg1, arg2) {}
+　
+var arr1 = []
+var arr2 = ["a","b","C"]
+var arr3 = ["a", "b", "C"]
+var arr4 = [ "a", "b" , "C" ]
+var arr4 = [
+    "banana",
+    "apple",
+    "pineapple"
+]
+　
+var obj1 = {}
+var obj2 = {name:"松田信介",age:"34"}
+var obj3 = {name: "松田信介",age: "34"}
+var obj4 = { name: "松田信介", age: "34" }
+var obj5 = {
+    name: "松田信介",
+    age: "34"
+}
+　
+()=>{}
+()=> {}
+() => {return "hello"}
+((str) => {return str})("hello")
+( (str) => {return str} )("hello")
+```
+
+## 問題のあるパターン
+
+```js
+function hello() {
+    return
+    "hello" // 実行されない
+}
+　
+hello () // undefined
+```
+
+```js
+console.log("hello")
+　
+// Uncaught SyntaxError: Unexpected identifier
+```

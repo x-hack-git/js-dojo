@@ -1,0 +1,205 @@
+---
+title: MDNの読み方
+slug: "/javascript_basics/extras/mdn"
+---
+
+## MDNなどでよく使われる表現について
+
+基本的に変数名はルールに従って好きな名前をつけてOKです。ただし、書籍などで**変数にどんなデータが入っているのか**を変数につける名前で表現することがあります。
+
+ここに、**暗黙的に使われる意味のある変数名**を列挙しておきます。他の言語でも似た名前の変数名が使われる傾向にあります。
+
+数は多くないので、覚えておくと他の言語を習得する時にも役に立ちます。
+
+### 1. 変数 i
+
+**Integer(整数)** の頭文字で、数字が入った変数であることを暗に示す。**int** と書いたりもする。
+変数名が短い方が処理速度が早かった時代の名残。for の **カウンタ** としてよく使われる。
+
+```js
+for(let i=0;i<5;i++){
+    console.log(i) // 0, 1, 2, 3, 4 と出力される
+}
+```
+
+### 2. 変数 f
+
+**float**(浮動小数点数)を表す。f という名前の変数が出てきたら、**少数点を持った数**だと思ってください。浮動小数点数とは `1.1` とか `3.141592` とかの数字です。
+
+```js
+var f = 0.1
+```
+
+### 3. 変数 num
+
+**number**(数値)を表す。num (num1, num2)という名前の変数が出てきたら、**数値**だと思ってください。
+
+```js
+var num1 = 50
+var num2 = 80
+```
+
+### 4. 変数 str
+
+**String**(文字列)を表す。 str という名前の変数が出てきたら、**文字列型のデータ**が入っていると思って欲しい。
+
+```js
+var str = "hello, world"
+```
+
+### 5. 変数 arr
+
+**Array**(配列)を表す。 arr という名前の変数が出てきたら、**配列型のデータ**が入っていると思って欲しい。
+
+```js
+var arr = [1, 2, 3]
+```
+
+### 6. 変数 obj
+
+**Object**(オブジェクト)を表す。obj という名前の変数が出てきたら、**オブジェクト形式のデータ**が入っていると思って欲しい。
+
+```js
+var obj = { name: "山田太郎", birthday: "2001/12/25" }
+```
+
+### 7. 変数 hoge / fuga
+
+特に意味がない変数名。コードの説明などで時折登場する。変数名を考えるのが面倒な時に暫定的に使われるもの。仕事のコードでこの変数を使用すると確実に怒られる。変形した `hage`, `fugo` などが使われることもある。
+
+```js
+function hoge(fuga){
+    console.log(fuga)
+}
+hoge("hello")
+```
+
+### 8. 変数 res / result
+
+関数の実行結果が入る変数。res という名前の変数が出てきたら、**関数を実行した結果データ**が入っていると思って欲しい。(一部例外もあります)
+
+```js
+function hoge(num1, num2){
+    var result = (num1 * num2) + num1 + num2
+    return result
+}
+```
+
+9. 関数 func
+
+**function**(関数オブジェクト)を表す。func という名前の変数が出てきたら、**何かしらの関数**なんだなと思ってください。
+
+```js
+function func(){
+    // ...省略
+}
+setInterval(func, 200)
+```
+
+10. 関数 callback
+
+関数が引数として他の関数に渡される場合にこの名前をつける。callback という名前の変数が出てきたら、**何かしらの関数**(関数オブジェクト) なんだなと理解してください。
+
+```js
+function func(callback){
+    callback()
+}
+```
+
+11. 引数 arg
+
+関数の引数(argument)が数値や文字の場合には **arg**  (arg2, arg3 …) と言う名前をつける。この名前が出てきたら、関数の引数なんだと理解してください。
+
+```js
+function add(arg1, arg2){
+    return arg1 + arg2
+}
+```
+
+12. パラメータ param(s)
+
+arg(argument) ではなく**param** の場合もあります。
+
+```js
+function square(param1, param2){
+    return param1 * param2
+}
+```
+
+13. 真偽値 bool
+
+Boolean型のデータが入っています。true または false のどちらかです。
+比較演算子の結果などは Boolean型 です。
+
+```js
+let a = 100
+let b = "100"
+let bool = (a === b)
+console.log(bool) // false
+```
+
+## 実践
+
+MDN Web docsの Array の map メソッドの記述を見てみましょう。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+
+![](/images/mdn_01.png)
+
+MDNを見て関数の使い方が分かるようになっていればバッチリです。
+
+
+## Array.prototype.map() の構文
+
+まずはこちらをじっくり見てください。
+
+```js
+// Array.prototype.map() の構文
+let new_array = arr.map(function callback( currentValue[, index[, array]]) {
+    // return element for new_array
+}[, thisArg])
+```
+
+
+パッと見、何がなんだかよく分かりません。初心者はこの構文を見た時点でQiita記事に逃げてしまいます。
+が、いくつかのルールを理解さえすればちっとも難しくありません！
+
+読み方
+### 1. **function**という **keyword** がある場合、必ず引数を取るための `()` そして処理を記述するブロック `{}` が必ずあります.
+
+このルールに当てはめると、下記の紫色の箇所は関数オブジェクトですね。
+
+```js
+let new_array = arr.map(function callback( currentValue[, index[, array]]) {
+    // return element for new_array
+}[, thisArg])
+```
+
+### 2. `[]` 記号は、通常は配列ですが構文の中でメソッドの引数として出現した場合は、省略可能(**option**)という意味です。
+
+```js
+// 引数は [] で囲まれているので省略可能
+function ([arg1, arg2, ...]) { ... }
+　
+// function() {}
+// function(arg1) {}
+```
+
+なので、下記の紫色の箇所は**省略可能**という意味ですね。
+
+```js
+let new_array = arr.map(function callback(currentValue[, index[, array]]) {
+    // return element for new_array
+}[, thisArg])
+```
+
+### 3. callback関数の引数は三つ
+
+1. currentValue - 必須
+2. index - 省略可能
+3. array - 省略可能
+
+```js
+function callback(currentValue[, index[, array]]) {
+    // return element for new_array
+}
+```

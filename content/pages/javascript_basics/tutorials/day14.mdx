@@ -1,0 +1,101 @@
+---
+title: 【14日目】DOM操作 DOM操作 その⑤
+slug: "/javascript_basics/tutorials/day14"
+---
+
+前回は無名関数をやりました。これは重要なので改めてもう一度説明します。
+まずは書き方の違いだけ覚えてください。
+
+1. 普通の関数 hello という名前で関数を生成する
+
+```js
+function hello(name) {
+    console.log("Hello, " + name + " さん")
+}
+```
+
+2. 無名関数にはその名の通り名前がない
+
+```
+(name) => {
+    console.log("Hello, " + name + " さん")
+}
+```
+
+3. 変数に格納して使う
+
+```js
+var hello = (name) => {
+    console.log("Hello, " + name + " さん")
+}
+　　
+hello("まつだ")
+```
+
+今の所は、関数の定義方法がいくつかあるんだな程度に覚えて置いてください。
+関数はこれ以外にもいくつか定義の仕方があります。
+
+## 用語集
+- イベント
+
+## イベントについて
+- クリックした時に実行される ➡️ `onclick`
+- ダブルクリックした時に実行される ➡️ `ondblclick`
+- マウスが動いた時に実行される ➡️ `onmousemove`
+- etc...
+
+など、他にもたくさんのイベントがあります。
+
+## JSFiddle
+
+JavaScriptをブラウザで気軽に試せる便利なツールです、HTML/CSSも書けます。
+https://jsfiddle.net/
+
+## 実際に試して見ましょう
+JavaScriptのタブ、HTMLのタブ、CSSタブ、Resultタブ、
+4つの**タブ**が確認できますか？
+
+右側にある `Edit JSFiddle`というボタンからもコードが確認できます。
+
+<script async src="//jsfiddle.net/xhack/du6132tj/embed/js,html,css,result/dark/"></script>
+
+## イベントは上記以外にもたくさんあります
+
+最初のうちは、ユーザーの操作をきっかけに発生すマウスやキーボード系のイベントを中心に見ておけば十分です。
+入力の途中で、今までの総文字数をカウントしたり、クリックしたら見た目を何か変化させたりができます。
+
+- [MDN イベントリファレンス](https://developer.mozilla.org/ja/docs/Web/Events)
+
+## 課題1
+クリックしたら背景の色が変わるコードをイベントを使って書いてみましょう
+
+背景が変わるDOM操作
+
+```js
+var func1 = () => {
+    var body = document.getElementsByTagName("body")
+    if(body[0].style.backgroundColor == "red"){
+        body[0].style.backgroundColor = "blue"
+    } else {
+        body[0].style.backgroundColor = "red"
+    }
+}
+```
+
+## 課題2
+画像タグ(img)をHTMLに一つ配置し、画像データが切り替わるコードを書いてみましょう。
+DOMを取得するコードはバッチリですか？
+
+```js
+img.src = "https://..."
+```
+
+さあ、ここまで学習した内容でオセロゲームを作るための材料は「全て」揃いました。
+次回からは5日かけてオセロを作って行きます！
+
+まずはCanvasを使って、オセロの盤面を作ります。
+オセロに必要な素材は、四角形と丸だけです。
+
+どうでしょう、イメージがわきますか？
+
+次回、お楽しみに！
