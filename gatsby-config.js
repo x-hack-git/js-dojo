@@ -75,7 +75,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
-    `@wardpeet/gatsby-plugin-static-site`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
