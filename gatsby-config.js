@@ -26,20 +26,6 @@ module.exports = {
     ],
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [
-    //     {
-    //       resolve: "gatsby-remark-external-links",
-    //       options: {
-    //         target: "_self",
-    //         rel: "nofollow"
-    //       }
-    //     }
-    //     ]
-    //   }
-    // },
     {
       resolve: `@lekoarts/gatsby-theme-minimal-blog`,
       // See the theme's README for all available options
@@ -89,6 +75,7 @@ module.exports = {
       },
     },
     `gatsby-plugin-sitemap`,
+    `@wardpeet/gatsby-plugin-static-site`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
