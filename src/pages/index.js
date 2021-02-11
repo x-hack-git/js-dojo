@@ -1,8 +1,9 @@
 import React from "react"
 import Container from "../components/container"
+import Header from "../components/header/header"
+import Footer from "../components/footer/footer"
 import styles from "./about-css-modules.module.css"
 
-console.log(styles)
 const User = props => (
   <div className={styles.user}>
     <img src={props.avatar} className={styles.avatar} alt="" />
@@ -16,6 +17,7 @@ const User = props => (
 export default function About() {
   return (
     <Container>
+      <Header />
       <h1>About CSS Modules</h1>
       <p>CSS Modules are cool</p>
       <User
@@ -28,6 +30,7 @@ export default function About() {
         avatar="https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/tutorial/part-two/pexels-guilherme-almeida-1858175.jpg"
         excerpt="I'm Daniela Dewitt. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
       />
+      <Footer />
     </Container>
   )
 }
