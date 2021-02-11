@@ -8,22 +8,12 @@ module.exports = {
   siteMetadata: {
     siteTitle: `X-HACK`,
     siteTitleAlt: `X-HACK - あらゆるものをHACKする`,
-    siteImage: `/banner.jpg`,
-    siteDescription: ``,
-    siteUrl: 'https://takumon.github.io/',
-    // title: '株式会社X-HACK',
-    // author: '株式会社X-HACK 松田信介',
-    // description: 'あらゆるものをHACKする',
-    social: [
-      {
-        name: "twitter",
-        url: "https://twitter.com/amber1ey",
-      },
-      {
-        name: "github",
-        url: "https://github.com/amberleyromo",
-      },
-    ],
+    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
+    siteUrl: 'https://js-dojo.com/',
+    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
+    siteLanguage: `jp`,
+    siteImage: `/banner.png`,
+    author: `松田 信介`,
   },
   plugins: [
     {
@@ -31,18 +21,6 @@ module.exports = {
       // See the theme's README for all available options
       options: {
         navigation: [
-          // {
-          //   title: `会社概要`,
-          //   slug: `/company`,
-          // },
-          // {
-          //   title: `利用規約`,
-          //   slug: `/terms`,
-          // },
-          // {
-          //   title: `個人情報保護方針`,
-          //   slug: `/policy`,
-          // },
           {
             title: `JavaScript基礎`,
             slug: `/javascript_basics`,
@@ -59,13 +37,7 @@ module.exports = {
             title: `Blog`,
             slug: `/blog`,
           },
-        ],
-        externalLinks: [
-          {
-            name: `X-HACKについて`,
-            url: `https://twitter.com/xhackjp1`,
-          },
-        ],
+        ]
       },
     },
     {
