@@ -1,0 +1,45 @@
+.card {
+  width: 300px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  margin: 0 auto;
+}
+@media screen and (max-width: 980px) {
+  .card {
+    width: 100%;
+    margin: 0 auto 2rem;
+    display: block;
+  }
+}
+.cardImg {
+  border-radius: 5px 5px 0 0;
+  max-width: 100%;
+  height: auto;
+}
+.cardContent {
+  padding: 20px;
+}
+.cardTitle {
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+.cardText {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.cardLink {
+  text-align: center;
+  padding: 20px;
+}
+.cardLink a {
+  text-decoration: none;
+  color: #374CA5;
+  margin: 0 10px;
+}
+.cardLink a:hover {
+  color: #374ca5a3;
+}

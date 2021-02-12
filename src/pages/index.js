@@ -2,35 +2,35 @@ import React from "react"
 import Container from "../components/container"
 import Header from "../components/header/header"
 import Footer from "../components/footer/footer"
+import Card from "../components/card/index"
+import Main from "../components/main_contents/index"
 import styles from "./about-css-modules.module.css"
-
-const User = props => (
-  <div className={styles.user}>
-    <img src={props.avatar} className={styles.avatar} alt="" />
-    <div className={styles.description}>
-      <h2 className={styles.username}>{props.username}</h2>
-      <p className={styles.excerpt}>{props.excerpt}</p>
-    </div>
-  </div>
-)
 
 export default function About() {
   return (
-    <Container>
+    <div>
       <Header />
-      <h1>About CSS Modules</h1>
-      <p>CSS Modules are cool</p>
-      <User
-        username="Maria Randall"
-        avatar="https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/tutorial/part-two/pexels-daniel-xavier-1102341.jpg"
-        excerpt="I'm Maria Randall. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      />
-      <User
-        username="Daniela Dewitt"
-        avatar="https://raw.githubusercontent.com/gatsbyjs/gatsby/master/docs/docs/tutorial/part-two/pexels-guilherme-almeida-1858175.jpg"
-        excerpt="I'm Daniela Dewitt. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
-      />
+      <Container>
+        <div className={styles.cardContents}>
+          <Card
+            title="WEB開発塾"
+            text="ゲームを作りながら学ぶWeb開発塾とは少数精鋭のJavaScript特化型スクールです。"
+            url=""
+          />
+          <Card
+            title="JavaScript道場"
+            text="ゲームを作りながら学ぶWeb開発塾とは少数精鋭のJavaScript特化型スクールです。"
+            url=""
+          />
+          <Card
+            title="参加者ポートフォリオ"
+            text="ゲームを作りながら学ぶWeb開発塾とは少数精鋭のJavaScript特化型スクールです。"
+            url=""
+          />
+        </div>
+        <Main />
+      </Container>
       <Footer />
-    </Container>
+    </div>
   )
 }
