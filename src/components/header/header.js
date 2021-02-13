@@ -1,6 +1,7 @@
 import React from "react";
 import headerStyles from "./header.module.css"
 import logo from "../../../static/xhack_logo.png"
+import { Link } from "gatsby"
 
 export default function Header() {
   return (
@@ -22,16 +23,22 @@ export default function Header() {
           <nav className="header-category">
             <ul className={headerStyles.navLinks}>
               <li>
-                <a href="">Vue</a>
+                <Link to="/vue">Vue</Link>
               </li>
               <li>
-                <a href="">React</a>
+                <Link to="/nuxt">Nuxt</Link>
               </li>
               <li>
-                <a href="">Gatsby</a>
+                <Link to="/react">React</Link>
               </li>
               <li>
-                <a href="">Nuxt</a>
+                <Link to="/next">Next</Link>
+              </li>
+              <li>
+                <Link to="/gatsby">Gatsby</Link>
+              </li>
+              <li>
+                <Link to="/javascript">JavaScript</Link>
               </li>
             </ul>
           </nav>
