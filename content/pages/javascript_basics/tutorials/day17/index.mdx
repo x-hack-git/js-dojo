@@ -1,0 +1,124 @@
+---
+title: 【17日目】オセロ③
+slug: "/javascript_basics/tutorials/day17"
+date: 2019-09-01
+tags:
+  - javascript
+  - tutorials
+description: Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry. In this class, students study and learn how to defend themselves against all aspects of the Dark Arts, including dark creatures, curses, hexes and jinxes (dark charms), and duelling.
+banner: "https://id.js-dojo.com/assets/img/mv-game.png"
+---
+
+## 課題の解説： 石を置けるかの判定ロジックを追加しよう
+
+置けない場所に石を配置した際は警告を出します
+
+まずは前回のコードの復習です！
+下記のコードで読めない箇所があったら遠慮なく質問して下さい！
+
+```js
+var canvas = document.getElementById("reversi")
+var ctx = canvas.getContext("2d")
+var playBoard = [
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0],
+]
+　
+ctx.fillStyle = "black"
+　
+// クリックした座標に石を置く
+function onClickPutStone(event){
+    // HTMLの中にCANVASがあるので、CANVASのどの位置をクリックしたか
+    // 調整するために、CANVASとHTMLの位置関係から補正しています
+    var rect = event.target.getBoundingClientRect();
+    x = event.clientX - rect.left;
+    y = event.clientY - rect.top;
+    x = x - x % 40 + 20 // キリが良い箇所に配置されるようにx座標を補正
+    y = y - y % 40 + 20 // キリが良い箇所に配置されるようにy座標を補正
+　
+    // どこに石を置いたか記憶する
+    var posX = (x-20) / 40
+    var posY = (y-20) / 40
+　
+    putStone(posX, posY, "white");
+    console.log(playBoard)
+}
+　
+// 初期配置を行う関数
+function initialize(){
+    putStone(140, 140, "white")
+    putStone(180, 140, "black")
+    putStone(140, 180, "black")
+    putStone(180, 180, "white")
+}
+// 座標を指定しして石を置く
+function putStone(x, y, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(40*x + 20, 40*y + 20, 16, 0, 2 * Math.PI);
+    ctx.fill();
+　
+    playBoard[x][y] = 1 // 1:white 2:black とする
+}
+// マス目を引く処理
+function drawPlayBoard () {
+    // 縦に線を引く
+    for (let col = 0; col < 8; col++) {
+        ctx.beginPath(); // Start a new path
+        ctx.moveTo(40 * col, 0); // Move the pen to
+        ctx.lineTo(40 * col, 320); // Draw a line to
+        ctx.stroke();
+    }
+    // 横に線を引く
+    for (let row = 0; row < 8; row++) {
+        ctx.beginPath(); // Start a new path
+        ctx.moveTo(0, 40 * row); // Move the pen to
+        ctx.lineTo(320, 40 * row); // Draw a line to
+        ctx.stroke();
+    }
+}
+　
+// 盤面を描く
+drawPlayBoard()
+// 初期配置
+initialize()
+```
+
+## 課題の回答例：すでに石が置いてある箇所には置けない
+
+さあ、かなりコードがごちゃごちゃになって来ました・・・
+このコードは後で読みやすくしますが、まずは無理やり機能が動作するところまで作り切ってしまいましょう
+
+### ポイント. 1
+
+盤面を配列の入れ子で表現しています。 `[0,0,0,0,0,0,0,0]` これが一行分のデータを表現していて、それが8つの計 64 です。そう、これは オセロのマスの数と一緒 ですね！
+
+オセロの盤面を 配列で表現できる というのは、プログラマならすぐに頭に浮かびますが、まだプログラミングに慣れていないうちはこの発想自体が難しいかも知れません。
+
+配列データで表現することで、どの位置に何色の石が置いてあるかをシンプルな「データ」で表現できますよね？
+
+ここが重要なポイントです。
+
+あとは、この配列データを調べることで、どこのマスに石を置いたら、どの石がひっくり返るか分かるという寸法です。
+
+`現実世界をデータで表現する癖` を身に付けてください。
+
+### ポイント. 2
+
+配列がどういう風になっているかを分かりやすくするために、配列のデータをHTMLに表示できるようにしています
+
+<iframe width="100%" height="300" src="//jsfiddle.net/xhack/8Ldn0vub/embedded/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+
+長いですが、丁寧に読み取っていけば一つ一つの処理は難しくないはずです！
+あとはひっくり返す処理さえできれば、完成は目前です！
+
+## 追加 課題
+
+白石、黒石の現在の数を数えて、表示するプログラムを書いてみましょう。
+配列データに 1, 2 がいくつあるか数えて、DOMを操作してHTMLに表示させればOKですね。

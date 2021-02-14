@@ -1,0 +1,67 @@
+---
+title: 【12日目】DOM操作 DOM操作 その❸
+slug: "/javascript_basics/tutorials/day12"
+date: 2019-09-01
+tags:
+  - javascript
+  - tutorials
+description: Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry. In this class, students study and learn how to defend themselves against all aspects of the Dark Arts, including dark creatures, curses, hexes and jinxes (dark charms), and duelling.
+banner: "https://id.js-dojo.com/assets/img/mv-game.png"
+---
+
+## 前回の続き・・・
+
+前回はCanvasの使い方を見ました。Canvasを使うと自由に四角形や円が書けます。
+[+JavaScript道場：十一日目 / DOM操作 その❷](day11)
+
+今日はMath(数学的な処理をするための便利な機能を持ったクラス)を使って、ランダムなカラーコードを生成して見たいと思います。
+
+**前回作成したHTMLを用意して開いておいてください。準備はいいですか？**
+
+## ランダムなカラーコードを生成するコードを書いてみよう
+四角形が描画できたら、あとはランダムなカラーを `fillStyle` プロパティにセットして、たくさん四角形を書けばOK。
+![カラーコードのサンプル](/images/12day_01.png)
+
+1. カラーコードとは、`#000000` `#696969` `#f5deb3` といった色を表す文字データ
+2. 先頭は `#` で始まり、後ろに6桁の `0~f` の文字が並ぶ
+
+```js
+// 前回作成したHTMLで実行すること！！
+// コンソールで実行してみよう
+var canvas = document.getElementById('canvas')
+var ctx = canvas.getContext('2d')
+　　
+ctx.fillStyle = randomColorCode() // 色を指定する
+ctx.fillRect(50, 50, 200, 200) // 矩形で塗り潰すエリア
+　　
+// #000000 ~ #ffffff までの色コードを返す関数
+function randomColorCode() {
+    var randomColor = "#"
+    for(var i = 0; i < 6; i++) {
+    randomColor += generateHexCharacter()
+    }
+　　
+    // ランダムな16進数を一文字返す関数
+    function generateHexCharacter(){
+    return Math.floor(16*Math.random()).toString(16)
+    }
+　　
+    return randomColor
+}
+```
+
+## 調べてみよう
+- **toString(16) とは？**
+- **Math.floor とは？**
+- **Math.random とは？**
+
+## コードを書いてみよう
+### 1. forを使ってたくさん四角形を書いてみよう
+### 2. 四角形を沢山生成する処理を関数として定義しよう
+### 3. setIntervalを使って一定間隔で四角形を沢山書く関数を実行しよう
+
+## 解説は次回！
+
+余裕がある人は、円や線を沢山書いてみましょう。(JavaScriptを使って！ですよ)
+
+[+JavaScript道場：十三日目 / DOM操作 その❹](day13)
