@@ -2,6 +2,14 @@ import React from "react";
 import cardStyles from "./card.module.css"
 import { Link } from "gatsby"
 
+function MyLink(props) {
+  const outerLink = props.url;
+  if (outerLink.indexOf("id.js-dojo") > 0) {
+    return <a href={props.url} target="_blank">詳細を見る</a>;
+  }
+  return (<Link to={props.url} target="_blank">詳細を見る</Link>);
+}
+
 export default function Card(props) {
   return (
     <div>
@@ -12,8 +20,7 @@ export default function Card(props) {
           <p className={cardStyles.cardText}>{props.text}</p>
         </div>
         <div className={cardStyles.cardLink}>
-          {/* <Link to={props.url}>詳細を見る</Link> */}
-          <a href={props.url} target="_blank">詳細を見る</a>
+          <MyLink url={props.url}/>
         </div>
       </div>
     </div>

@@ -10,9 +10,9 @@ export default function Header() {
         <div>
           <div className={headerStyles.headerContents} id="st-header">
             <div className={headerStyles.logo}>
-              <a href="">
+              <Link to="/">
                 <img className={headerStyles.logoImg} src={logo} alt="X-HACK" />
-              </a>
+              </Link>
             </div>
           </div>
           <div className={headerStyles.menu}>

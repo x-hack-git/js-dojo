@@ -4,7 +4,7 @@ slug: "/javascript_basics/tutorials/day01"
 ---
 
 ## 事前準備
-- [Chromeブラウザのインストール](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)を済ませておいてください
+[Chromeブラウザのインストール](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)を済ませておいてください
 
 ## Chromeデベロッパー・ツールを使ってみよう
 
@@ -21,7 +21,7 @@ JavaScriptの挙動を確かめたいだけであれば、コンソールで動�
 
 **例示したコードは、必ず、自分の手で実行してください。**
 
-× テキストエディタを立ち上げ→HTMLファイル新規作成→ブラウザで開く→実行結果確認
+× テキストエディタを立ち上げ→HTMLファイル新規作成→ブラウザで開く→実行結果確認  
 ○ consoleタブ開く→ コード打ち込む
 
 ## 早速実践！consoleタブでJavaScriptを実行してみよう
@@ -31,13 +31,16 @@ JavaScriptの挙動を確かめたいだけであれば、コンソールで動�
 
 ## 手順
 ### 1. 適当なウェブページを開く
+どんなページでも構いません。
+今閲覧している、このサイト上で実行するのが一番お手軽だと思います。
+
 ### 2. 右クリックして`検証` を選択
 
 ショートカットキーもあります
 - Macの場合、`command(⌘) + option(⌥) + i` 3つのキーを`同時`に押します
 - windowsの場合、 `F12`
 
-![](/images/01day_01.png) <!-- img.css-0 height="25%" -->
+![](/images/01day_01.png) { width: 200px; }
 
 ### 3. タブが複数あるので`Console` タブを選択します
 ![](/images/01day_02.png)
@@ -63,6 +66,8 @@ JavaScriptの挙動を確かめたいだけであれば、コンソールで動�
 // 結果：1
 ```
 
+---
+
 ```js
 // 変数に数値を保存して計算
 var num1 = 10
@@ -70,24 +75,32 @@ var num2 = 15
 num1 * num2 // 150
 ```
 
+---
+
 ```js
 // ログ出力 文字の場合は｀引用符｀と呼ばれる記号で囲むこと
 console.log("好きな文字")
 ```
+
+---
 
 ```js
 // 警告表示
 alert("好きな文字")
 ```
 
+---
+
 ```js
 // 関数の登録
 function hello(){
-    console.log("HEllO WORLD!!")
+    console.log("HELLO WORLD!!")
 }
 // 関数の呼び出し
-hello() // "HEllO WORLD!!"
+hello() // "HELLO WORLD!!"
 ```
+
+---
 
 ```js
 // JavaScriptオブジェクト
