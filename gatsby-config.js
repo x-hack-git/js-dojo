@@ -8,9 +8,9 @@ module.exports = {
   siteMetadata: {
     siteTitle: `X-HACK`,
     siteTitleAlt: `X-HACK - あらゆるものをHACKする`,
-    siteHeadline: `Minimal Blog - Gatsby Theme from @lekoarts`,
+    siteHeadline: `JavaScript道場`,
     siteUrl: 'https://js-dojo.com/',
-    siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
+    siteDescription: `作りながら学ぶJavaScript.`,
     siteLanguage: `jp`,
     siteImage: `/banner.png`,
     author: `松田 信介`,
@@ -29,10 +29,6 @@ module.exports = {
             title: `開発塾`,
             slug: `/developer_program`,
           },
-          // {
-          //   title: `お申し込み`,
-          //   slug: `/apply`,
-          // },
           {
             title: `Blog`,
             slug: `/blog`,
@@ -50,7 +46,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `minimal-blog - @lekoarts/gatsby-theme-minimal-blog`,
+        name: `JS-DOJO`,
         short_name: `js-dojo blog`,
         description: `JavaScript道場`,
         start_url: `/`,
