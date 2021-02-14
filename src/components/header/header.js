@@ -23,22 +23,22 @@ export default function Header() {
           <nav className="header-category">
             <ul className={headerStyles.navLinks}>
               <li>
-                <Link to="tags/vue">Vue</Link>
+                <Link to="/tags/vue">Vue</Link>
               </li>
               <li>
-                <Link to="tags/nuxt">Nuxt</Link>
+                <Link to="/tags/nuxt">Nuxt</Link>
               </li>
               <li>
-                <Link to="tags/react">React</Link>
+                <Link to="/tags/react">React</Link>
               </li>
               <li>
-                <Link to="tags/next">Next</Link>
+                <Link to="/tags/next">Next</Link>
               </li>
               <li>
-                <Link to="tags/gatsby">Gatsby</Link>
+                <Link to="/tags/gatsby">Gatsby</Link>
               </li>
               <li>
-                <Link to="tags/javascript">JavaScript</Link>
+                <Link to="/tags/javascript">JavaScript</Link>
               </li>
             </ul>
           </nav>
