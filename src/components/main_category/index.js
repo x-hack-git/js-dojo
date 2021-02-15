@@ -21,7 +21,7 @@ export default function CategoryMain() {
       />
       <Card
         title="参加者ポートフォリオ"
-        text="Web開発塾の参加者が作成した作品をアーカイブしています。サンプルコードも確認できるます。"
+        text="Web開発塾の参加者が作成した作品をアーカイブしています。サンプルコードもご覧になれます。"
         url="portfolios"
         image="https://webcreatorbox.com/sample/images/bear.jpg"
         alt="参加者ポートフォリオの画像"

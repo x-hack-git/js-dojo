@@ -7,6 +7,10 @@ tags:
   - tutorials
 ---
 
+import Column from "/src/components/javascript_basics/column.js"
+
+<Column title="説明を簡潔にするため" />
+
 ## 注意事項
 
 説明を簡潔にするため、「現時点では重要でない概念」「初学者のうちは気にしなくて良い情報」という部分はあえて飛ばしています。正確な内容については、書籍か [MDN web docs](https://developer.mozilla.org/ja/)を参照してください。
@@ -40,7 +44,7 @@ JavaScript習得のためにやっていただきたいトレーニングの一�
 ## 変数とは？
 
 データを一時的に保管しておくための「箱」のような物をイメージして下さい。変数には好きな「名前」をつけることができます。変数を**「識別子」**と呼ぶこともありますので覚えておいてください。
-![](/images/02day_01.png)
+![](./02day_01.png)
 
 https://media.prod.mdn.mozit.cloud/attachments/2016/07/12/13506/fff6c759c689be5d4d25f35f7e6f0e5a/boxes.png (参照元：MDN web docs)
 
@@ -115,8 +119,8 @@ var 1_name = 100 // 変数名のつけ方がおかしい
 ```
 
 　JavaScript構文として解釈できないコードが実行されると、下記のようなエラーが出ます。このエラーは単純な書き間違いが原因です。コードをよく見て冷静に間違いを見つけ修正しましょう。
-![](/images/02day_02.png)
-![](/images/02day_03.png)
+![](./02day_02.png)
+![](./02day_03.png)
 
 ## 変数だけを宣言し、後から値を入れる書き方ができる
 宣言と値の格納は分けることもできます
@@ -141,7 +145,7 @@ var name, age, job_name, company_name, birthday
 var name = '松田信介', age = 34, company_name = '株式会社X-HACK', birthday = '1985-04-13'
 ```
 
-![](/images/02day_04.png)
+![](./02day_04.png)
 
 ## 変数の中身は書き換えることができる
 `var`で宣言した変数の中身は他のデータで書き換えることも可能です。
