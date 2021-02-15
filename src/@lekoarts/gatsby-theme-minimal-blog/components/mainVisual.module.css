@@ -1,0 +1,9 @@
+.container {
+  margin: auto 0;
+  text-align: center;
+}
+
+.innerItem {
+  max-width: 1024px;
+  margin: auto;
+}

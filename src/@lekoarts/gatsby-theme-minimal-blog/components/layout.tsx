@@ -45,10 +45,10 @@ const Layout = ({ children, className = `` }: LayoutProps) => (
       })}
     />
     <SEO />
-    <SkipNavLink>Skip to content</SkipNavLink>
+    {/* <SkipNavLink>Skip to content</SkipNavLink> */}
     <Header />
+    <MainVisual url="https://id.js-dojo.com/assets/img/mv-game.png" /> 
     <Container>
-      {/* <MainVisual url="https://id.js-dojo.com/assets/img/mv-game.png" /> */}
       <Box id="skip-nav" sx={{ ...CodeStyles }} className={className}>
         {children}
       </Box>
