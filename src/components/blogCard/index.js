@@ -6,7 +6,7 @@ export default function blogCard(props) {
     <div className={cardStyles.card}>
       <a href="">
         <div className={cardStyles.cardHeader}>
-          <img src="http://webcreatorbox.com/sample/images/bear.jpg" className={cardStyles.cardImg} alt="" />
+          <img src="https://webcreatorbox.com/sample/images/bear.jpg" className={cardStyles.cardImg} alt="" />
         </div>
       </a>
       <div className={cardStyles.cardContent}>
