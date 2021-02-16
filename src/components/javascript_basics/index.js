@@ -19,7 +19,7 @@ export default props => {
     allMdxPage.edges.map(_ => {
       return (
         <Link key={_.node.title} to={_.node.slug}>
-          <img src={_.node.banner} />
+          <img src={_.node.banner} alt="TOP BANNER" />
           <p>{_.node.title}</p>
         </Link>
       )

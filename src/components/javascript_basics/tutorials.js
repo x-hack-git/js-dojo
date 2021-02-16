@@ -27,22 +27,22 @@ export default props => {
     }
   `)
 
-  console.log(allMdx.nodes)
+  // console.log(allMdx.nodes)
 
   return (
     allMdx.nodes.map(_ => {
       return (
         <Link key={_.frontmatter.title} to={_.frontmatter.slug}>
-          <p style={{ backgroundColor: `purple` }}>
+          <div style={{ backgroundColor: `purple` }}>
             {/* {_.frontmatter.banner && (
               <BannerImage
                 // fluid={mdx.frontmatter.banner.childImageSharp.fluid}
                 alt="Banner Image"
               />
             )} */}
-            <img src={_.frontmatter.banner} className="" style={{ width: `240px` }}></img>
+            <img src={_.frontmatter.banner} alt="Tutorial Top Banner" className="" style={{ width: `240px` }}></img>
             <h4>{_.frontmatter.title}</h4>
-          </p>
+          </div>
           {/* <img src={_.frontmatter.banner.childImageSharp.fluid} className="" style={{ width: `240px` }}></img> */}
         </Link>
       )

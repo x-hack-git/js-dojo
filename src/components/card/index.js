@@ -5,9 +5,9 @@ import { Link } from "gatsby"
 function MyLink(props) {
   const outerLink = props.url;
   if (outerLink.indexOf("id.js-dojo") > 0) {
-    return <a href={props.url} target="_blank">詳細を見る</a>;
+    return <a href={props.url} target="_blank" rel="noreferrer">詳細を見る</a>;
   }
-  return (<Link to={props.url} target="_blank">詳細を見る</Link>);
+  return (<Link to={props.url} target="_blank" rel="noreferrer">詳細を見る</Link>);
 }
 
 export default function Card(props) {

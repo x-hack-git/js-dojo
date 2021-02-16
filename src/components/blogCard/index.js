@@ -4,7 +4,7 @@ import cardStyles from "./blogCard.module.css"
 export default function blogCard(props) {
   return (
     <div className={cardStyles.card}>
-      <a href="">
+      <a href={props.url}>
         <div className={cardStyles.cardHeader}>
           <img src="https://webcreatorbox.com/sample/images/bear.jpg" className={cardStyles.cardImg} alt="" />
         </div>
