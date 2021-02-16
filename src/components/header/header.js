@@ -38,7 +38,7 @@ export default function Header() {
                 <Link to="/tags/gatsby">Gatsby</Link>
               </li>
               <li>
-                <Link to="/tags/javascript">JavaScript</Link>
+                <Link to="/javascript_basics/tutorials">JavaScript</Link>
               </li>
             </ul>
           </nav>
