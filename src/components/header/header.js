@@ -20,7 +20,7 @@ export default function Header() {
             <div className="bar bar2"></div>
             <div className="bar bar3"></div>
           </div>
-          <nav className="header-category">
+          <nav className={headerStyles.headerCategory}>
             <ul className={headerStyles.navLinks}>
               <li>
                 <Link to="/tags/vue">Vue</Link>
