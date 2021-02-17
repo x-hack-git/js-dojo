@@ -3,14 +3,18 @@ title: 【1日目】Chromeデベロッパー・ツール
 slug: "/javascript_basics/tutorials/day01"
 date: 2019-09-01
 description: Defence Against the Dark Arts (abbreviated as DADA) is a subject taught at Hogwarts School of Witchcraft and Wizardry and Ilvermorny School of Witchcraft and Wizardry. In this class, students study and learn how to defend themselves against all aspects of the Dark Arts, including dark creatures, curses, hexes and jinxes (dark charms), and duelling.
-banner: ../default.png
+banner: ./quiz_01.png
 tags:
   - javascript
   - tutorials
 ---
 
 ## 事前準備
-[Chromeブラウザのインストール](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)を済ませておいてください
+Chromeブラウザのインストールを使って説明をしていきますので、事前に  
+[Chromeブラウザのインストール](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)
+を済ませておいてください。
+
+Chromeブラウザ以外にもデベロッパー・ツールを使えるブラウザはあるので、すでに使い慣れたブラウザでデベロッパー・ツールを使える場合は、そちらを使っても良いでしょう。
 
 ## Chromeデベロッパー・ツールを使ってみよう
 
@@ -22,38 +26,51 @@ tags:
 
 ### コンソールでコードを書くメリット
 
-ブラウザのコンソールは便利なので、使えるようにしておいてください。学習効率が違います。
-JavaScriptの挙動を確かめたいだけであれば、コンソールで動かして確かめましょう。
+ブラウザのコンソールはとても便利なので、いつでも使えるように使い方の練習をしておいきましょう。  
 
-**例示したコードは、必ず、自分の手で実行してください。**
+コンソールを使って勉強すると、学習効率が格段に違います。  
+JavaScriptの挙動を確かめたい場合は、コンソールで動かして確かめましょう。
 
-× テキストエディタを立ち上げ→HTMLファイル新規作成→ブラウザで開く→実行結果確認  
-○ consoleタブ開く→ コード打ち込む
+そして、**例示したコードは、必ず、自分の手で実行してください。**
 
-## 早速実践！consoleタブでJavaScriptを実行してみよう
+> **推奨しない方法**
+> - テキストエディタを立ち上げ→HTMLファイル新規作成→ブラウザで開く→実行結果確認  
+
+> **推奨する方法**
+> - consoleタブを開く→ コード打ち込む
+
+それでは、実際に一緒に練習していきます。
+
+--- 
+
+# 実践！consoleタブでJavaScriptを実行してみよう
 うまく行かない時は？
 1. 別のタブを開いて試してみましょう
 2. Webサイトによっては右クリックを「禁止」しているものもあります。違うウェブサイトへ遷移してみましょう
 
-## 手順
+## consoleタブを表示する手順
 ### 1. 適当なウェブページを開く
 どんなページでも構いません。
-今閲覧している、このサイト上で実行するのが一番お手軽だと思います。
+今閲覧している、このサイト(JavaScript道場)のコンソールで実行するのが一番お手軽だと思います。
 
-### 2. 右クリックして`検証` を選択
+### 2. 右クリックして「検証」を選択
 
 ショートカットキーもあります
+
 - Macの場合、`command(⌘) + option(⌥) + i` 3つのキーを`同時`に押します
-- windowsの場合、 `F12`
+- windowsの場合、 `F12` を押します
 
-![](./01day_01.png)
+> ![](./01.png)
 
-### 3. タブが複数あるので`Console` タブを選択します
-![](./01day_02.png)
+### 3. タブが複数あるので Console タブを選択します
+
+> ![](./01day_02.png)
+
 ### 4. コンソールタブでJavaScriptを実行してみよう！
-変数宣言・関数・オブジェクトについては次回以降に詳しく解説します。まずは、コードを書いて動かしてみましょう。
+変数宣言・関数・オブジェクトについては次回以降に詳しく解説します。  
+まずは、コードを実際に書いて動かしてみましょう。
 
-```js
+> ```js
 // 単純な計算
 // + (加算)
 // - (減算)
@@ -72,32 +89,24 @@ JavaScriptの挙動を確かめたいだけであれば、コンソールで動�
 // 結果：1
 ```
 
----
-
-```js
+> ```js
 // 変数に数値を保存して計算
 var num1 = 10
 var num2 = 15
 num1 * num2 // 150
 ```
 
----
-
-```js
+> ```js
 // ログ出力 文字の場合は｀引用符｀と呼ばれる記号で囲むこと
 console.log("好きな文字")
 ```
 
----
-
-```js
+> ```js
 // 警告表示
 alert("好きな文字")
 ```
 
----
-
-```js
+> ```js
 // 関数の登録
 function hello(){
     console.log("HELLO WORLD!!")
@@ -106,9 +115,7 @@ function hello(){
 hello() // "HELLO WORLD!!"
 ```
 
----
-
-```js
+> ```js
 // JavaScriptオブジェクト
 var obj = {
     name: "松田信介",
@@ -127,7 +134,8 @@ obj.favorite_foods[0] // バナナ
 ### 6. 🚫マークをクリックすると、コンソールの中身をクリアできます。
 consoleを綺麗にしたい場合に使えます。
 変数や関数などは登録されたままです。
-![](./01day_03.png)
+
+> ![](./01day_03.png)
 
 **Consoleタブはめちゃくちゃ頻繁に使うので、必ず使い方を覚えてください。**
 
@@ -142,7 +150,7 @@ JavaScriptプログラミングをしている時、以下のような状況でC
 こういったconsoleの使い方を「consoleデバッグ」と呼んだりします。
 重要なテクニックなので、覚えておきましょう。
 
-```js
+> ```js
 var a = 100
 a = a * 1.5
 console.log("変数a:" + a) // 変数a:150
@@ -151,27 +159,29 @@ a = "hello"
 console.log({a}) // {a: "hello"}
 ```
 
-
 ## コンソールの見方
-&gt;(左に開いた矢印)の行は、実行されるコード
+&gt; (左に開いた矢印)の行は、実行されるコード
 
-```js
-> a=10
+> ```js noLineNumbers
+> > a=10
 ```
 
-&lt;(右に開いた矢印)の行は、returnされた結果(式が評価された結果)
+&lt; (右に開いた矢印)の行は、returnされた結果(式が評価された結果)
 
-```js
-< 10
+> ```js noLineNumbers
+> < 10
 ```
 
 何もない行は、単にconsoleに出力された情報 (console.log で出力された文字など)
-![](./01day_04.png)
 
-console.log の **戻り値**は **undefined**
+> ![](./01day_04.png)
+
+console.log の **戻り値**は **undefined**  
 var n = 10 の **戻り値**は **undefined**
 
-![](./01day_05.png)
+> ![](./01day_05.png)
 
 
-二日目は、変数とは何か？なぜプログラミングには変数が必要か？変数の名前の付け方の解説をします
+二日目は、変数とは何か？なぜプログラミングには変数が必要か？そして、変数の名前の付け方の解説をします
+
+次回はこちら [JavaScript道場：二日目 / 変数について](day02)
