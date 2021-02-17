@@ -2,20 +2,16 @@ import baseTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-the
 
 export default {
   ...baseTheme,
-  colors: {
-    // text: "#333",
-    background: "#fdfdf5",
-    primary: "tomato",
-  },
-  fonts: {
-    // body: "Georgia, serif",
-    // heading: "system-ui, sans-serif",
-  },
   styles: {
     h1: {
-      fontSize: 40,
-      fontFamily: 'heading',
-      fontWeight: 'heading',
+      fontSize: [28, 40],
+      background: 'linear-gradient(transparent 70%, #FFFF80 70%)',
+      display: 'inline'
+    },
+    h2: {
+      fontSize: [24, 32],
+      background: 'linear-gradient(transparent 70%, #FFFF80 70%)',
+      display: 'inline'
     },
   }
 }

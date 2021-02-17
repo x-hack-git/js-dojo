@@ -22,7 +22,7 @@ export default function Header() {
           </div>
           <nav className={headerStyles.headerCategory}>
             <ul className={headerStyles.navLinks}>
-              <li>
+              {/* <li>
                 <Link to="/tags/vue">Vue</Link>
               </li>
               <li>
@@ -30,7 +30,7 @@ export default function Header() {
               </li>
               <li>
                 <Link to="/tags/react">React</Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/tags/next">Next</Link>
               </li>

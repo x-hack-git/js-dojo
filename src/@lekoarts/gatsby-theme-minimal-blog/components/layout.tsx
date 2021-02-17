@@ -8,7 +8,7 @@ import SEO from "./seo"
 // import Footer from "./footer"
 import Header from "../../../components/header/header"
 import Footer from "../../../components/footer/footer"
-import MainVisual from "./main-visual"
+// import MainVisual from "./main-visual"
 import CodeStyles from "../styles/code"
 import SkipNavLink from "./skip-nav"
 
@@ -47,7 +47,7 @@ const Layout = ({ children, className = `` }: LayoutProps) => (
     <SEO />
     {/* <SkipNavLink>Skip to content</SkipNavLink> */}
     <Header />
-    <MainVisual url="https://id.js-dojo.com/assets/img/mv-game.png" /> 
+    {/* <MainVisual url="https://id.js-dojo.com/assets/img/mv-game.png" />  */}
     <Container>
       <Box id="skip-nav" sx={{ ...CodeStyles }} className={className}>
         {children}
