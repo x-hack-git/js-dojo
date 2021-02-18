@@ -1,8 +1,9 @@
 import React from "react";
 import headerStyles from "./header.module.css"
 import logo from "../../../static/xhack_logo.png"
+import Logout from "../button/logout.js"
 import { Link } from "gatsby"
-import { auth, useAuth, SocialLogins} from "gatsby-theme-firebase";
+import { useAuth, SocialLogins} from "gatsby-theme-firebase";
 
 export default function Header() {
   const { isLoggedIn, profile } = useAuth();
@@ -46,7 +47,7 @@ export default function Header() {
                 {isLoggedIn ? (
                   <>
                     <span>{profile.displayName} さん ようこそ！</span>
-                    <button onClick={() => auth.signOut()}>ログアウト</button>
+                    <Logout />
                   </>
                 ) : (
                   <SocialLogins
