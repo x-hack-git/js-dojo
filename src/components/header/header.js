@@ -42,17 +42,17 @@ export default function Header() {
               <li>
                 <Link to="/javascript_basics/tutorials">JavaScript</Link>
               </li>
-              {isLoggedIn ? (
-                <button onClick={() => auth.signOut()}>ログアウト</button>
-              ) : (
-                <li>
+              <li>
+                {isLoggedIn ? (
+                  <button onClick={() => auth.signOut()}>ログアウト</button>
+                ) : (
                   <SocialLogins
                     onSuccess={(user) => {
                       console.log(user);
                     }}
                   />
-                </li>
-              )}
+                )}
+              </li>
             </ul>
           </nav>
         </div>
