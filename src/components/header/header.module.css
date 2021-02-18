@@ -60,6 +60,11 @@ nav.headerCategory {
   font-weight: bold;
 }
 
+.navLinks li span {
+  color: #fff;
+  margin-right: 1rem;
+}
+
 /* menu */
 
 .menu {
