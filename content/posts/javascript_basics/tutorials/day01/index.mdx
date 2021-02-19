@@ -14,18 +14,29 @@ import Comment from "/src/components/parts/comment/index.js"
 import Keyword from "/src/components/parts/keyword/index.js"
 import Quote from "/src/components/parts/quote/index.js"
 
-<Comment text="プログラミングは、書いて動かしてみることで身につきます。テキストを読むだけではなく、必ず実際に動かして動作を確認しましょう。資料にあるサンプルコードは、自分で書いて動かすことを習慣にしてください。" />
+## このページで学ぶこと
+
+- デベロッパー・ツールの使い方
+- コンソールの使い方
+
+## 学ぶ理由
 
 ## 事前準備
-Chromeブラウザのインストールを使って説明をしていきますので、事前に  
-[Chromeブラウザのインストール](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)
-を済ませておいてください。
+Chromeブラウザのインストールを使って説明をしていきます。Chromeブラウザがない場合は、インストールを事前に行ってください。
 
-Chromeブラウザ以外にもデベロッパー・ツールを使えるブラウザはあるので、すでに使い慣れたブラウザでデベロッパー・ツールを使える場合は、そちらを使っても良いでしょう。
+- [Chromeブラウザをインストールする](https://www.google.co.jp/chrome/?brand=CHBD&gclid=Cj0KCQjwmdzzBRC7ARIsANdqRRk9k7pArul6ICEhB5oExKGUFKvHq9_5ifbzMOSPtLQGyh0YaZIYh1AaAq-GEALw_wcB&gclsrc=aw.ds)
+
+Chromeブラウザ以外にもデベロッパー・ツールを使えるブラウザがあります。
+使い慣れたブラウザでデベロッパー・ツールを使える場合は、そちらを使っても問題ありません。
 
 ## Chromeデベロッパー・ツールを使ってみよう
 
 ### デベロッパー・ツールとは？
+Webアプリのデバッグやパフォーマンスチューニングに役立つツール群のことです。
+
+JavaScriptを実行したり、通信の状況を確認したり、HTMLのレイアウトを確認したりといったWebアプリ開発で役に立つ便利な機能が使うことができます。
+
+Chromeブラウザに標準で搭載された機能(Chrome以外のブラウザにも似た機能を持つものもあります)です。
 
 <Quote text="Webアプリのデバッグやパフォーマンスチューニングに役立つツール群 JavaScriptを実行したり、通信の状況を確認したり、HTMLのレイアウトを確認したりといったWebアプリ開発で役に立つ便利な機能が使えるもの Chromeブラウザに標準で搭載された機能(Chrome以外のブラウザにも似た機能を持つものもあります)です" />
 
@@ -38,26 +49,28 @@ JavaScriptの挙動を確かめたい場合は、コンソールで動かして�
 
 そして、**例示したコードは、必ず、自分の手で実行してください。**
 
-**推奨しない方法**
+#### 推奨しない方法
 - テキストエディタを立ち上げ
 - HTMLファイル新規作成
 - ブラウザで開く
 - 実行結果確認  
 
-**推奨する方法**
+#### 推奨する方法
 - consoleタブを開く
 - コード打ち込む
 
 それでは、一緒に練習していきましょう。
 
---- 
+---
 
-# 実践！consoleタブでJavaScriptを実行してみよう
-もし、コードがうまく実行されない時は？
+## 実践！consoleタブでJavaScriptを実行してみよう
 
-1. 別のタブを開いて試してみましょう
-2. ブラウザをリロードしてみましょう
+<Point title="コードがうまく実行されない時は？" text="1. 別のタブを開いて試してみましょう 2. ブラウザをリロードしてみましょう
 3. Webサイトによっては右クリックを「禁止」しているものもあります。違うウェブサイトへ遷移してみましょう
+"/>
+
+<Comment title="コードがうまく実行されない時は？" text="かえるぴょこぴょこみぴょこぴょこ
+    あわせてぴょこぴょこむぴょこぴょこ"/>
 
 ## consoleタブを表示する手順
 ### 1. 適当なウェブページを開く
