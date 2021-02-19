@@ -2,12 +2,10 @@ import baseTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-the
 
 export default {
   ...baseTheme,
-  fonts: {
-    body: `"-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif,"Segoe UI Emoji"`,
-  },
   styles: {
     root: {
-      backgroundColor: "#EDF2F7"
+      backgroundColor: "#EDF2F7",
+      lineHeight: 1.9
     },
     h1: {
       fontSize: '1.7em',
