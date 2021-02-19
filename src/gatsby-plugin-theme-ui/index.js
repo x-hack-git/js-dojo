@@ -6,6 +6,9 @@ export default {
     body: `"-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif,"Segoe UI Emoji"`,
   },
   styles: {
+    root: {
+      backgroundColor: "#EDF2F7"
+    },
     h1: {
       fontSize: '1.7em',
       mt: 4,
