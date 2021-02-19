@@ -2,50 +2,52 @@ import baseTheme from "@lekoarts/gatsby-theme-minimal-blog/src/gatsby-plugin-the
 
 export default {
   ...baseTheme,
+  fonts: {
+    body: `"-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans",Meiryo,sans-serif,"Segoe UI Emoji"`,
+  },
   styles: {
+    root: {
+      backgroundColor: "#EDF2F7"
+    },
     h1: {
-      fontSize: [20, 40]
+      fontSize: '1.7em',
+      mt: 4,
+      borderBottom: '1px solid rgba(92,147,187,.17)'
     },
     h2: {
       fontSize: [24],
-      background: 'linear-gradient(transparent 70%, #FFFF80 70%)',
-      display: 'inline',
+      mt: '2.3em',
+      mb: '.5em',
     },
-    blockquote: {
-      borderLeftColor: `primary`,
-      borderLeftStyle: `solid`,
-      borderLeftWidth: `6px`,
-      mx: 0,
-      pl: 4,
-      p: {
-        fontStyle: `italic`,
+    h3: {
+      mt: '2.25em',
+      mb: '.5em'
+    },
+    h4: {
+      fontSize: '1.1em',
+      mt: '2.25em',
+      mb: '.5em'
+    },
+    p: {
+      mt: 4.8,
+      mb: 0
+    },
+    a: {
+      color: '#0f83fd'
+    },
+    ul: {
+      li: {
+        margin: '.6rem 0'
+      }
+    },
+    ol: {
+      li: {
+        margin: '.6rem 0',
       },
-    },
-    table: {
-      width: `100%`,
-      my: 4,
-      borderCollapse: `separate`,
-      borderSpacing: 0,
-      [[`th`, `td`]]: {
-        textAlign: `left`,
-        py: `4px`,
-        pr: `4px`,
-        pl: 0,
-        borderColor: `muted`,
-        borderBottomStyle: `solid`,
-      },
-    },
-    th: {
-      verticalAlign: `bottom`,
-      borderBottomWidth: `2px`,
-      color: `heading`,
-    },
-    td: {
-      verticalAlign: `top`,
-      borderBottomWidth: `1px`,
     },
     hr: {
-      mx: 0,
+      margin: '2.5rem 0',
+      borderTop: '2px solid rgba(92,147,187,.17)'
     },
   },
   layout: {

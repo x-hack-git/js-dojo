@@ -42,13 +42,16 @@ const Layout = ({ children, className = `` }: LayoutProps) => (
           transition: `all 0.3s ease-in-out`,
           color: `text`,
         },
+        ".css-19y478w": {
+          background: "white"
+        }
       })}
     />
     <SEO />
     {/* <SkipNavLink>Skip to content</SkipNavLink> */}
     <Header />
     {/* <MainVisual url="https://id.js-dojo.com/assets/img/mv-game.png" />  */}
-    <Container>
+    <Container >
       <Box id="skip-nav" sx={{ ...CodeStyles }} className={className}>
         {children}
       </Box>
