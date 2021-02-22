@@ -1,9 +1,12 @@
 import React from "react";
 import headerStyles from "./header.module.css"
 import logo from "../../../static/xhack_logo.png"
+import SignOut from "../button/signout.js"
 import { Link } from "gatsby"
+import { useAuth, SocialLogins} from "gatsby-theme-firebase";
 
 export default function Header() {
+  const { isLoggedIn, profile } = useAuth();
   return (
     <header className="">
       <div id="gazou-wide">
@@ -39,6 +42,20 @@ export default function Header() {
               </li>
               <li>
                 <Link to="/javascript_basics/tutorials">JavaScript</Link>
+              </li>
+              <li>
+                {isLoggedIn ? (
+                  <>
+                    <span>{profile.displayName} さん ようこそ！</span>
+                    <SignOut />
+                  </>
+                ) : (
+                  <SocialLogins
+                    onSuccess={(user) => {
+                      console.log(user);
+                    }}
+                  />
+                )}
               </li>
             </ul>
           </nav>

@@ -1,6 +1,14 @@
-body {
-  margin: 0;
+
+.gatsby-highlight {
+  margin-bottom: 1rem;
+  background: #fdfaf6;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-.red {
-  color: red;
+
+pre {
+  border-radius: 3px;
+} 
+
+.gatsby-resp-image-wrapper {
+  margin-top: 1rem;
 }

@@ -49,11 +49,20 @@ nav.headerCategory {
   text-align: center;
 }
 
+.navLinks li:last-of-type {
+  margin-left: auto;
+}
+
 .navLinks li a {
   text-decoration: none;
   color: #fff;
   position: relative;
   font-weight: bold;
+}
+
+.navLinks li span {
+  color: #fff;
+  margin-right: 1rem;
 }
 
 /* menu */
